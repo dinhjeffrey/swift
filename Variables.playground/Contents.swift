@@ -56,15 +56,49 @@ if let unwrappedInt = phoneExtension {
 
 
 // Creating Functions
-
-func createMessage() {
+// function and the type it returns -> String
+// ** parameters passed into Swift function are treated as an immutable value, a constant. you can put var in front of someNumber to make it a variable
+func createMessage(someNumber: Int, secondNumber: Int) -> String {
+    print("You passed in the number: \(someNumber) + \(someNumber)")
     let message = "Simplicity is the ultimate sopistication."
     print(message)
+    return message
 }
 
-createMessage()
+// every argument after the 1st argument, you have to pass in the parameter name
+let result = createMessage(99, secondNumber: 100)
 
 
+// Defining a Class
+class Appliance { // classes need an initalizer, all var must have initial value.
+    // properties
+    var manufacturer: String
+    var model: String
+    var voltage: Int
+    var capacity: Int?
+    
+    // default initializer. can create different inits if they have different parameter signatures
+    init() {
+        self.manufacturer = "default manufacturer"
+        self.model = "default model"
+        self.voltage = 120
+    }
+    
+    // methods
+    func getDetails() -> String {
+        var message = "This is the \(self.model) from \(self.manufacturer)."
+        if self.voltage >= 220 {
+            message += "This model is for European usage"
+        }
+        return message
+    }
+}
 
-
-
+// ... later ...
+// create new objects
+var kettle = Appliance()
+kettle.manufacturer = "megappliace, inc."
+kettle.model = "TeaMaster 5000"
+kettle.voltage = 221
+let details = kettle.getDetails()
+print(details)

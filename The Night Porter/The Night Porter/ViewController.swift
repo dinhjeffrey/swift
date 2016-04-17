@@ -10,8 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBAction func changeBackground(sender: AnyObject) {
+    @IBAction func darkMode(sender: AnyObject) {
         view.backgroundColor = UIColor.darkGrayColor()
+        
+        for eachControl in view.subviews {
+            if let label = eachControl as? UILabel {
+                label.textColor = UIColor.lightGrayColor()
+            }
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
