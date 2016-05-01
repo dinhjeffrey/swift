@@ -26,7 +26,7 @@ var population: Int
  */
 
 // let is a constant, you can't change it. you can change var
-
+var i = 0...9
 // for
 for i in 0 ..< 9 {
     print("The value ofi is: \(i)")
