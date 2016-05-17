@@ -18,26 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-4r-mk7">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-4r-mk7">
                                 <rect key="frame" x="534" y="28" width="46" height="30"/>
                                 <state key="normal" title="Insert"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zhu-lc-VMK"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To-do item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pku-Kb-4PZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To-do item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pku-Kb-4PZ">
                                 <rect key="frame" x="20" y="28" width="506" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="szp-ic-qDz">
+                                <rect key="frame" x="20" y="66" width="560" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mNj-4r-mk7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="90G-3g-I9Y"/>
-                            <constraint firstItem="mNj-4r-mk7" firstAttribute="leading" secondItem="pku-Kb-4PZ" secondAttribute="trailing" constant="8" id="ASd-vt-5w4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mNj-4r-mk7" secondAttribute="trailing" id="Al6-8t-Kzu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="szp-ic-qDz" secondAttribute="trailing" id="Dks-gA-CnJ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="pku-Kb-4PZ" secondAttribute="leading" id="E5x-1f-juX"/>
-                            <constraint firstItem="pku-Kb-4PZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="VdL-v1-UT7"/>
-                            <constraint firstItem="pku-Kb-4PZ" firstAttribute="baseline" secondItem="mNj-4r-mk7" secondAttribute="baseline" id="XBu-Cx-GL8"/>
+                            <constraint firstItem="pku-Kb-4PZ" firstAttribute="baseline" secondItem="mNj-4r-mk7" secondAttribute="baseline" id="rfy-49-7Qt"/>
+                            <constraint firstItem="szp-ic-qDz" firstAttribute="top" secondItem="pku-Kb-4PZ" secondAttribute="bottom" constant="8" id="sqU-6s-fkV"/>
+                            <constraint firstItem="mNj-4r-mk7" firstAttribute="leading" secondItem="pku-Kb-4PZ" secondAttribute="trailing" constant="8" id="t1F-pZ-caP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="szp-ic-qDz" secondAttribute="leading" id="xrr-vM-msU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="szp-ic-qDz" secondAttribute="bottom" constant="20" id="yAy-OK-H0g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="itemTextField" destination="pku-Kb-4PZ" id="kiz-Qd-xh3"/>
+                        <outlet property="tableView" destination="szp-ic-qDz" id="17B-eH-oxg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
