@@ -10,4 +10,3 @@ switch a { // Swift does not require breaks in switch statements. It automatical
     default: print("ONE PUNCH MAN ROX")
 }
 
-STOP ON PAGE 39
