@@ -8,17 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		002EA0A11CEAB6AF0086FC33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EA0A01CEAB6AF0086FC33 /* AppDelegate.swift */; };
-		002EA0A31CEAB6AF0086FC33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EA0A21CEAB6AF0086FC33 /* ViewController.swift */; };
+		002EA0A31CEAB6AF0086FC33 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EA0A21CEAB6AF0086FC33 /* MainViewController.swift */; };
 		002EA0A61CEAB6AF0086FC33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002EA0A41CEAB6AF0086FC33 /* Main.storyboard */; };
 		002EA0A81CEAB6AF0086FC33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 002EA0A71CEAB6AF0086FC33 /* Assets.xcassets */; };
 		002EA0AB1CEAB6AF0086FC33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002EA0A91CEAB6AF0086FC33 /* LaunchScreen.storyboard */; };
-		002EA0B31CEAC5E60086FC33 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EA0B21CEAC5E60086FC33 /* TodoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		002EA09D1CEAB6AF0086FC33 /* iTahDoodle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTahDoodle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		002EA0A01CEAB6AF0086FC33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		002EA0A21CEAB6AF0086FC33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		002EA0A21CEAB6AF0086FC33 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		002EA0A51CEAB6AF0086FC33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		002EA0A71CEAB6AF0086FC33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		002EA0AA1CEAB6AF0086FC33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				002EA0A01CEAB6AF0086FC33 /* AppDelegate.swift */,
-				002EA0A21CEAB6AF0086FC33 /* ViewController.swift */,
+				002EA0A21CEAB6AF0086FC33 /* MainViewController.swift */,
 				002EA0A41CEAB6AF0086FC33 /* Main.storyboard */,
 				002EA0B21CEAC5E60086FC33 /* TodoList.swift */,
 				002EA0A71CEAB6AF0086FC33 /* Assets.xcassets */,
@@ -139,8 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				002EA0B31CEAC5E60086FC33 /* TodoList.swift in Sources */,
-				002EA0A31CEAB6AF0086FC33 /* ViewController.swift in Sources */,
+				002EA0A31CEAB6AF0086FC33 /* MainViewController.swift in Sources */,
 				002EA0A11CEAB6AF0086FC33 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,10 +252,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iTahDoodle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dindledoo.iTahDoodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -265,10 +265,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iTahDoodle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dindledoo.iTahDoodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -291,6 +293,7 @@
 				002EA0B11CEAB6AF0086FC33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
