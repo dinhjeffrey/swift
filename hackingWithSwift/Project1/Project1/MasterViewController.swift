@@ -18,10 +18,11 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         let fm = NSFileManager.defaultManager()
         let path = NSBundle.mainBundle().resourcePath!
+        print(path)
         let items = try! fm.contentsOfDirectoryAtPath(path)
         
         for item in items {
-            if item.hasPrefix("nssl") {
+            if item.hasSuffix(".jpg") {
                 objects.append(item)
             }
         }
@@ -44,9 +45,9 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                let navigationController = segue.destinationViewController as! UINavigationController
+                let controller = navigationController.topViewController as! DetailViewController
+                controller.detailItem = objects[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -78,6 +79,6 @@ class MasterViewController: UITableViewController {
 
 
 
-    https://www.hackingwithswift.com/read/1/4/introducing-interface-builder
+    // https://www.hackingwithswift.com/read/1/7/wrap-up
 }
 
