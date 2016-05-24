@@ -20,6 +20,17 @@ class ViewController: UIViewController {
     var correctAnswer = 0
     var countriesRandomized = [String]()
     
+    @IBAction func buttonTapped(sender: UIButton) {
+        if sender.tag == correctAnswer {
+            self.title = "Correct!"
+            score += 1
+        } else {
+            self.title = "Wrong!"
+        }
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
+        presentViewController(ac, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,7 +49,7 @@ class ViewController: UIViewController {
         askQuestion()
     }
 
-    func askQuestion() {
+    func askQuestion(action: UIAlertAction! = nil) {
         button1.setImage(UIImage(named: countriesRandomized[0]), forState: .Normal)
         button2.setImage(UIImage(named: countriesRandomized[1]), forState: .Normal)
         button3.setImage(UIImage(named: countriesRandomized[2]), forState: .Normal)
