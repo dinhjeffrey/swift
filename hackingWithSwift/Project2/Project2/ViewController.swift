@@ -8,6 +8,7 @@
 
 import UIKit
 import GameplayKit
+import AVFoundation
 
 
 class ViewController: UIViewController {
@@ -20,14 +21,20 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     var countriesRandomized = [String]()
+    var player: AVAudioPlayer?
+   
     
     @IBAction func buttonTapped(sender: UIButton) {
         if sender.tag == correctAnswer {
-            self.title = "Correct!"
+            correctSound()
+            self.title = "+1"
             score += 1
             scoreLabel.text = String(score)
         } else {
-            self.title = "Wrong!"
+            wrongSound()
+            self.title = "-1"
+            score -= 1
+            scoreLabel.text = String(score)
         }
         let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
@@ -64,7 +71,35 @@ class ViewController: UIViewController {
         correctAnswer = GKRandomSource.sharedRandom().nextIntWithUpperBound(3)
         self.title = countriesRandomized[correctAnswer].uppercaseString
     }
-
+    
+    func correctSound() {
+        let url = NSBundle.mainBundle().URLForResource("correct", withExtension: "mp3")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
+            guard let player = player else { return }
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
+    func wrongSound() {
+        let url = NSBundle.mainBundle().URLForResource("wrong", withExtension: "mp3")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
+            guard let player = player else { return }
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
