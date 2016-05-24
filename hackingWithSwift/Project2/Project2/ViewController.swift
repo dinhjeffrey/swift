@@ -74,19 +74,30 @@ class ViewController: UIViewController {
     func correctSound() {
         let url = NSBundle.mainBundle().URLForResource("correct", withExtension: "mp3")!
         
-        guard let player = try? AVAudioPlayer(contentsOfURL: url) else { return }
-        
-        player.prepareToPlay()
-        player.play()
+        do {
+            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
+            guard let player = player else { return }
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
     }
     
     func wrongSound() {
         let url = NSBundle.mainBundle().URLForResource("wrong", withExtension: "mp3")!
-        
-        guard let player = try? AVAudioPlayer(contentsOfURL: url) else { return }
-        
-        player.prepareToPlay()
-        player.play()
+//            guard let theRealPlayer = try? AVAudioPlayer(contentsOfURL: url) else { return }
+//        
+//            theRealPlayer.prepareToPlay()
+//            theRealPlayer.play()
+        do {
+            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
+            guard let player = player else { return }
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
     }
     
     override func didReceiveMemoryWarning() {
