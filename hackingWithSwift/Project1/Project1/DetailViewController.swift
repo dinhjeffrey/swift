@@ -33,6 +33,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        self.title = detailItem // Detail View Controller title
     }
     
     override func viewWillAppear(animated: Bool) {

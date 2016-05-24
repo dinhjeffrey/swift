@@ -13,7 +13,6 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [String]()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let fm = NSFileManager.defaultManager()
@@ -48,6 +47,7 @@ class MasterViewController: UITableViewController {
                 let navigationController = segue.destinationViewController as! UINavigationController
                 let controller = navigationController.topViewController as! DetailViewController
                 controller.detailItem = objects[indexPath.row]
+                self.title = controller.detailItem // Navigation Controller title
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -69,6 +69,7 @@ class MasterViewController: UITableViewController {
 
         let object = objects[indexPath.row]
         cell.textLabel!.text = object
+        
         return cell
     }
 
