@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         random()
     }
     override func viewDidLoad() {
-        print("hit viewDidLoad")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
@@ -75,29 +74,19 @@ class ViewController: UIViewController {
     func correctSound() {
         let url = NSBundle.mainBundle().URLForResource("correct", withExtension: "mp3")!
         
-        do {
-            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
-            guard let player = player else { return }
-            
-            player.prepareToPlay()
-            player.play()
-        } catch let error as NSError {
-            print(error.description)
-        }
+        guard let player = try? AVAudioPlayer(contentsOfURL: url) else { return }
+        
+        player.prepareToPlay()
+        player.play()
     }
     
     func wrongSound() {
         let url = NSBundle.mainBundle().URLForResource("wrong", withExtension: "mp3")!
         
-        do {
-            player = try AVAudioPlayer(contentsOfURL: url) // research this code more
-            guard let player = player else { return }
-            
-            player.prepareToPlay()
-            player.play()
-        } catch let error as NSError {
-            print(error.description)
-        }
+        guard let player = try? AVAudioPlayer(contentsOfURL: url) else { return }
+        
+        player.prepareToPlay()
+        player.play()
     }
     
     override func didReceiveMemoryWarning() {
