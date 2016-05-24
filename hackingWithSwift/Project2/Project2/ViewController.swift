@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var countries = [String]()
     var score = 0
@@ -24,14 +25,17 @@ class ViewController: UIViewController {
         if sender.tag == correctAnswer {
             self.title = "Correct!"
             score += 1
+            scoreLabel.text = String(score)
         } else {
             self.title = "Wrong!"
         }
         let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
         presentViewController(ac, animated: true, completion: nil)
+        random()
     }
     override func viewDidLoad() {
+        print("hit viewDidLoad")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
@@ -44,9 +48,13 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGrayColor().CGColor
         button3.layer.borderColor = UIColor.lightGrayColor().CGColor
         
-        countriesRandomized = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(countries) as! [String]
+        random()
         
-        askQuestion()
+        askQuestion() // since func askQuestion was initialized, we update the variable countriesRandomized when calling random()
+    }
+    
+    func random() {
+        countriesRandomized = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(countries) as! [String]
     }
 
     func askQuestion(action: UIAlertAction! = nil) {

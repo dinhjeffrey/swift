@@ -38,17 +38,35 @@
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zD2-aU-Al4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsr-Dr-B4p">
+                                <rect key="frame" x="275" y="504" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cg-6I-Tj3">
+                                <rect key="frame" x="333" y="504" width="17" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eIC-b7-hG9" firstAttribute="centerX" secondItem="XGo-1P-AmK" secondAttribute="centerX" id="9lt-IU-KXU"/>
+                            <constraint firstItem="1Cg-6I-Tj3" firstAttribute="top" secondItem="eIC-b7-hG9" secondAttribute="bottom" constant="44" id="BAU-lS-UBq"/>
                             <constraint firstItem="isA-if-hEx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F0A-ZH-1av"/>
+                            <constraint firstItem="lsr-Dr-B4p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="440" id="IDW-p8-kOq"/>
                             <constraint firstItem="eIC-b7-hG9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JdV-nq-xBp"/>
                             <constraint firstItem="XGo-1P-AmK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kjz-pf-WbT"/>
                             <constraint firstItem="isA-if-hEx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="Lqr-ff-bds"/>
+                            <constraint firstItem="1Cg-6I-Tj3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="440" id="MKc-EG-B6M"/>
                             <constraint firstItem="eIC-b7-hG9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="296" id="NTP-0C-GFS"/>
                             <constraint firstItem="XGo-1P-AmK" firstAttribute="top" secondItem="isA-if-hEx" secondAttribute="bottom" constant="30" id="Nn8-QA-SCZ"/>
                             <constraint firstItem="eIC-b7-hG9" firstAttribute="top" secondItem="XGo-1P-AmK" secondAttribute="bottom" constant="36" id="TMh-ap-KU4"/>
+                            <constraint firstItem="1Cg-6I-Tj3" firstAttribute="leading" secondItem="lsr-Dr-B4p" secondAttribute="trailing" constant="8" id="e5D-CX-mZr"/>
+                            <constraint firstItem="lsr-Dr-B4p" firstAttribute="top" secondItem="eIC-b7-hG9" secondAttribute="bottom" constant="44" id="jZj-3v-imk"/>
+                            <constraint firstItem="lsr-Dr-B4p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kXP-Nu-RMO"/>
                             <constraint firstItem="XGo-1P-AmK" firstAttribute="centerX" secondItem="isA-if-hEx" secondAttribute="centerX" id="o63-Tv-IsV"/>
                             <constraint firstItem="XGo-1P-AmK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="166" id="xHn-nq-qta"/>
                         </constraints>
@@ -58,6 +76,7 @@
                         <outlet property="button1" destination="isA-if-hEx" id="lVL-Uc-uTh"/>
                         <outlet property="button2" destination="XGo-1P-AmK" id="VR1-uH-EXP"/>
                         <outlet property="button3" destination="eIC-b7-hG9" id="vJ8-Vn-rK2"/>
+                        <outlet property="scoreLabel" destination="1Cg-6I-Tj3" id="b6r-JV-FQK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
