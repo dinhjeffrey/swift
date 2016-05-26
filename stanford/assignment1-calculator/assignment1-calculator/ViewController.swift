@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+
+    @IBOutlet weak var display: UILabel!
+    
     var userIsInTheMiddleOfTyping = false
     
-    @IBOutlet weak var display: UILabel!
     @IBAction func tappedButton(sender: UIButton) {
         
         let digit = sender.currentTitle!
@@ -24,28 +26,29 @@ class ViewController: UIViewController {
             display.text = digit
         }
         userIsInTheMiddleOfTyping = true
-        
-//        var number: String? = nil
-//        if number == nil {
-//            number = sender.currentTitle!
-//            answerScreen.text = number!
-//        } else {
-//            number = sender.currentTitle!
-//            answerScreen.text?.stringByAppendingString(number!)
-//        }
-//        print("\(number) was pressed")
+        print("\(digit) was pressed")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    private var displayValue: Double {
+        get {
+            return Double(display.text!)!
+        }
+        set {
+            display.text = String(newValue)
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private var brain = CalculatorBrain()
+    
+    @IBAction func performOperation(sender: UIButton) {
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(displayValue)
+        }
+        userIsInTheMiddleOfTyping = false
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperation(mathematicalSymbol)
+        }
+        displayValue = brain.result
     }
-    
-    
 }
 
