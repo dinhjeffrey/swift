@@ -13,14 +13,14 @@ class DetailViewController: UIViewController {
 
     @IBOutlet private weak var detailImageView: UIImageView!
 
-    var private detailItem: String? {
+    private var detailItem: String? {
         didSet { // executed any time the property value has changed
             // Update the view.
             self.configureView()
         }
     }
 
-    func private configureView() {
+    private func configureView() {
         // Update the user interface for the detail item.
         if let detail: String = self.detailItem {
             if let imageView = self.detailImageView {
@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
         self.title = detailItem // Detail View Controller title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,6 +45,15 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = true
+    }
+    
+    private func shareTapped() {
+        if (detailImageView.image == nil) {
+            detailImageView.image is! String = "No image was selected"
+        }
+        let vc = UIActivityViewController(activityItems: [detailImageView.image!], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        presentViewController(vc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
