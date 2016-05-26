@@ -4,3 +4,25 @@ var greeting = "Hello!"
 if let name = optionalName {
     greeting = "Hello, \(name)"
 }
+
+#Tuples
+func greet(name: String, day: String) -> String {
+    return "Hello \(name), today is \(day)."
+}
+greet("Bob", day: "Tuesday")
+
+// “Use a tuple to make a compound value—for example, to return multiple values from a function. The elements of a tuple can be referred to either by name or by number.”
+
+#Javascript-like Spread Operator 
+- Functions can also take a variable number of arguments, collecting them into an array.
+
+func sumOf(numbers: Int...) -> Int {
+    var sum = 0
+    for number in numbers {
+        sum += number
+    }
+    return sum
+}
+sumOf()
+sumOf(42, 597, 12)”
+
