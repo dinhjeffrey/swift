@@ -28,9 +28,9 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      how do we get pi or a function from our enums? Associated Values (Put in the parameters, arguments)
      for the binaryOperations, it will not be elegant if we have separate functions for each, but Swift takes care of this via closures
      closures are inline functions that captures the state of its environment
-     eg Operation.BinaryOperation( { (op1: Double, op2: Double) -> Double in 
-        return op1 * op2
-        })
+     eg Operation.BinaryOperation( { (op1: Double, op2: Double) -> Double in
+     return op1 * op2
+     })
      make this look a lot better with type inference
      $0, $1, $2 .. are default arguments
      */
@@ -38,11 +38,14 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt),
+        "sin" : Operation.UnaryOperation(sin),
         "cos" : Operation.UnaryOperation(cos),
-        "×" : Operation.BinaryOperation({ $0 * $1}),
-        "÷" : Operation.BinaryOperation({ $0 / $1}),
-        "+" : Operation.BinaryOperation({ $0 + $1}),
-        "−" : Operation.BinaryOperation({ $0 - $1}),
+        "tan" : Operation.UnaryOperation(tan),
+        "xʸ" : Operation.BinaryOperation(pow),
+        "×" : Operation.BinaryOperation(*),
+        "÷" : Operation.BinaryOperation(/),
+        "+" : Operation.BinaryOperation(+),
+        "−" : Operation.BinaryOperation(-),
         "=" : Operation.Equals
     ]
     /*
@@ -52,10 +55,10 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      not all keys in operation is not a Double, we have some functions like sqrt.
      therefore we use enum to let us use different values like Double, functions, etc.
      an Optional is actually an enum:
-        enum Optional<T> {
-            case None
-            case Some<T>
-        }
+     enum Optional<T> {
+     case None
+     case Some<T>
+     }
      */
     enum Operation {
         case Constant(Double)
@@ -99,7 +102,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      why are we making pending an optional?
      because when we type a number and not the operation yet, we want that operation to be nil and when we have one, we set it to that
      
-    */
+     */
     var pending: PendingBinaryOperationInfo?
     
     /*
@@ -108,7 +111,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      Classes we get a free initializer (nothing passed)
      We initialize Structs by passing in the argument every vars defined in the Struct
      when we click `5 *`, when we hit `*`, we store `5` into firstOperand.
-    */
+     */
     struct PendingBinaryOperationInfo {
         var binaryFunction: (Double, Double) -> Double
         var firstOperand: Double

@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var display: UILabel!
     
     private var userIsInTheMiddleOfTyping = false
+    var userPressedPeriod = false
     
     @IBAction private func tappedButton(sender: UIButton) {
         
@@ -31,7 +32,19 @@ class ViewController: UIViewController {
             display.text = digit
         }
         userIsInTheMiddleOfTyping = true
-        print("\(digit) was pressed")
+    }
+    @IBAction func period(sender: UIButton) {
+        let period = sender.currentTitle!
+        if !userPressedPeriod && !userIsInTheMiddleOfTyping {
+            display.text = period
+            userPressedPeriod = true
+            userIsInTheMiddleOfTyping = true
+        }
+        if !userPressedPeriod { // userIsInTheMiddleOfTyping is already true by default or else it would hit the previous if block
+            let textCurentlyInDisplay = display.text!
+            display.text = textCurentlyInDisplay + period
+            userPressedPeriod = true
+        }
     }
     
     /*
@@ -42,9 +55,15 @@ class ViewController: UIViewController {
     
     private var displayValue: Double {
         get {
-            return Double(display.text!)! // unwrapped because it might not be convertable (e.g. "hello")
+            print("in get")
+            if display.text != "." {
+                print("display.text! is \(display.text!)")
+                return Double(display.text!)! // unwrapped because it might not be convertable (e.g. "hello")
+            }
+            return 0.0 // to capture for sqrt(.)
         }
         set {
+            print("in set")
             display.text = String(newValue) // newValue is a special keyword. use (e.g. displayValue = M_PI vs. display.text = String(M_PI)
         }
     }
@@ -56,10 +75,11 @@ class ViewController: UIViewController {
     private var brain = CalculatorBrain()
     
     @IBAction private  func performOperation(sender: UIButton) {
-        if userIsInTheMiddleOfTyping {
-            brain.setOperand(displayValue)
-            userIsInTheMiddleOfTyping = false
-        }
+        //if userIsInTheMiddleOfTyping { // don't need because default value is 0. if uncommented, CalculatorBrain default accumulator is 0.0 already. When just setting math symbols, it will use default accumulator value of 0.0
+        brain.setOperand(displayValue)
+        userPressedPeriod = false
+        userIsInTheMiddleOfTyping = false
+        //}
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
