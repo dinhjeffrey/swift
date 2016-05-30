@@ -29,13 +29,13 @@ class ViewController: UIViewController {
      whenever we get the display, we get it returned as a Double
      we can also set it
      */
-    private var displayValue: Double {
+    private var displayValue: String {
         get {
             print("in displayValue get")
             if display.text != "." {
-                return Double(display.text!)! // unwrapped because it might not be convertable (e.g. "hello")
+                return display.text! // unwrapped because it might not be convertable (e.g. "hello")
             }
-            return 0.0 // to capture for sqrt(.)
+            return "0" // to capture for sqrt(.)
         }
         set {
             print("in displayValue set")
@@ -54,21 +54,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func tappedButton(sender: UIButton) {
-        let digit = Double(sender.currentTitle!)!
+        let digit = sender.currentTitle!
         print("in tappedButton \(digit)")
         if userIsInTheMiddleOfTyping { // [CLEAN] if statements
             print("in userIsInMiddleOfTyping")
-            displayValue = digit
+            displayValue += digit
             if !brain.isPartialResult {
                 print("in userIsInMiddleOfTyping !brain.isPartialResult")
-                sequenceValue += String(digit)
+                sequenceValue += digit
             }
         } else {
             print("in userIsInMiddleOfTyping else")
             displayValue = digit
             if !brain.isPartialResult {
                 print("in userIsInMiddleOfTyping else !brain.isPartialResult")
-                sequenceValue = String(digit)
+                sequenceValue = digit
             }
         }
         userIsInTheMiddleOfTyping = true
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     }
     @IBAction func period(sender: UIButton) {
         print("in func period")
-        let period = Double(sender.currentTitle!)!
+        let period = sender.currentTitle!
         if !userPressedPeriod && !userIsInTheMiddleOfTyping {
             print("in func period !userPressedPeriod && !userIsInTheMiddleOfTyping")
             displayValue = period
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         sequenceValue += String(period)
     }
     @IBAction func clearAll(sender: UIButton) {
-        displayValue = 0
+        displayValue = "0"
         sequenceValue = "0"
         print("in func clearAll")
     }
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     @IBAction private func tappedOperation(sender: UIButton) {
         //if userIsInTheMiddleOfTyping { // don't need because default value is 0. if uncommented, CalculatorBrain default accumulator is 0.0 already. When just setting math symbols, it will use default accumulator value of 0.0
         print("in func tappedOperation")
-        brain.setOperand(displayValue)
+        brain.setOperand(Double(displayValue)!)
         userPressedPeriod = false
         userIsInTheMiddleOfTyping = false
         //}
@@ -155,7 +155,7 @@ class ViewController: UIViewController {
             }
         }
         print("sending brain.result to displayValue")
-        displayValue = brain.result
+        displayValue = String(brain.result)
     }
 }
 
