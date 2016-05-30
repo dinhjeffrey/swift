@@ -13,14 +13,18 @@
  everytime you create a new class, you have 1 free initializer that takes no arguments
  now you can use CalculatorBrain's API
  */
-
+import UIKit
 import Foundation // models are UI independent so it never imports UIKit. Nothing in here about UI, all calculations
 
 class CalculatorBrain { // no super class since CalculatorBrain is the base model
     private var accumulator = 0.0
+    var operand = 0.0
     
     func setOperand(operand: Double) {
+        self.operand = operand
         accumulator = operand
+        print("in setOperand operand: \(self.operand), accumulator: \(accumulator)")
+        descriptionAccumulator = String(format: "%g", operand)
     }
     /*
      π is `option + p`
@@ -34,18 +38,21 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      make this look a lot better with type inference
      $0, $1, $2 .. are default arguments
      */
-    var operations: Dictionary<String,Operation> = [
+    var operations: [String: Operation] = [
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
-        "√" : Operation.UnaryOperation(sqrt),
-        "sin" : Operation.UnaryOperation(sin),
-        "cos" : Operation.UnaryOperation(cos),
-        "tan" : Operation.UnaryOperation(tan),
-        "xʸ" : Operation.BinaryOperation(pow),
-        "×" : Operation.BinaryOperation(*),
-        "÷" : Operation.BinaryOperation(/),
-        "+" : Operation.BinaryOperation(+),
-        "−" : Operation.BinaryOperation(-),
+        "√" : Operation.UnaryOperation(sqrt, {"√(\($0))"}),
+        "sin" : Operation.UnaryOperation(sin, {"sin(\($0))"}),
+        "cos" : Operation.UnaryOperation(cos, {"cos(\($0))"}),
+        "tan" : Operation.UnaryOperation(tan, {"tan(\($0))"}),
+        "x!" : Operation.UnaryOperation({tgamma($0+1)}, {"(\($0)!)"}),
+        "log" : Operation.UnaryOperation(log10, {"log_10(\($0))"}),
+        "E" : Operation.BinaryOperation({$0*pow(10, $1)}, {"\($0) * 10 ^ \($1)"}),
+        "xʸ" : Operation.BinaryOperation(pow, {"\($0) ^ \($1)"}),
+        "×" : Operation.BinaryOperation(*, {"\($0) * \($1)"}),
+        "÷" : Operation.BinaryOperation(/, {"\($0) ÷ \($1)"}),
+        "+" : Operation.BinaryOperation(+, {"\($0) + \($1)"}),
+        "−" : Operation.BinaryOperation(-, {"\($0) - \($1)"}),
         "=" : Operation.Equals
     ]
     /*
@@ -60,10 +67,10 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      case Some<T>
      }
      */
-    enum Operation {
+    enum Operation { // lower case in swift 3
         case Constant(Double)
-        case UnaryOperation((Double) -> Double)
-        case BinaryOperation((Double, Double) -> Double)
+        case UnaryOperation((Double) -> Double, (String) -> String)
+        case BinaryOperation((Double, Double) -> Double, (String, String) -> String)
         case Equals
     }
     /*
@@ -77,14 +84,29 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      We salt it away in another data structure called Struct
      */
     func performOperation(symbol: String) {
+        print("searching operations dictionary")
         if let operation = operations[symbol] {
+            print("operation symbol is \(operation)")
             switch operation {
             case .Constant(let value): accumulator = value
-            case .UnaryOperation(let function): accumulator = function(accumulator)
-            case .BinaryOperation(let function):
-                executePendingBinaryOperation()
-                pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+            descriptionAccumulator = symbol
+            case .UnaryOperation(let function, let descriptionFunction): accumulator = function(accumulator)
+            descriptionAccumulator = descriptionFunction(descriptionAccumulator)
+                print("in case .UnaryOperation")
+            case .BinaryOperation(let function, let descriptionFunction):
+                print("in case .BinaryOperation")
+                if (pending != nil) {
+                    print("in case .BinaryOperation != nil")
+                    isPartialResult = false
+                    executePendingBinaryOperation()
+                } else {
+                    print("in case .BinaryOperation else")
+                    isPartialResult = true
+                    pending = nil
+                    pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
+                }
             case .Equals: executePendingBinaryOperation()
+                print("in case .Equals")
             }
         }
     }
@@ -92,10 +114,14 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      if we have a pending operation, then evaluate the expression
      pending!.binaryFunction is a call inside the Struct to the binaryFunction function with arguments of the firstOperand(salted away) and the current operand(accumulator)
      */
-    func executePendingBinaryOperation() {
+    private func executePendingBinaryOperation() {
         if pending != nil {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            descriptionAccumulator = pending!.descriptionFunction(pending!.descriptionOperand, descriptionAccumulator)
             pending = nil
+            print("in executePendingBinaryOperation. binary operation pending false")
+        } else {
+            print("in executePendingBinaryOperation else. binary operation pending true")
         }
     }
     /*
@@ -103,7 +129,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      because when we type a number and not the operation yet, we want that operation to be nil and when we have one, we set it to that
      
      */
-    var pending: PendingBinaryOperationInfo?
+    private var pending: PendingBinaryOperationInfo?
     
     /*
      What is a struct?
@@ -112,9 +138,11 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      We initialize Structs by passing in the argument every vars defined in the Struct
      when we click `5 *`, when we hit `*`, we store `5` into firstOperand.
      */
-    struct PendingBinaryOperationInfo {
+    private struct PendingBinaryOperationInfo {
         var binaryFunction: (Double, Double) -> Double
         var firstOperand: Double
+        var descriptionFunction: (String, String) -> String
+        var descriptionOperand: String
     }
     /*
      read only property since there is no set
@@ -122,8 +150,29 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      */
     var result: Double {
         get {
+            print("in result get")
             return accumulator
         }
     }
     
+    var isPartialResult = false
+    private var descriptionAccumulator = "0"
+    var description: String {
+        get {
+            if pending == nil {
+                print("in description get if pending == nil")
+                return descriptionAccumulator
+            } else {
+                print("in description get else")
+                return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "")
+            }
+        }
+    }
 }
+// factorial function has to be outside of the class to work
+//func factorial(N: Double) -> Double {
+//    if N <= 1 {
+//        return 1
+//    }
+//    return N * factorial(N - 1.0)
+//}

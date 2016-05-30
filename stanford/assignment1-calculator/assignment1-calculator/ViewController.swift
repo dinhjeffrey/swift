@@ -16,35 +16,67 @@ class ViewController: UIViewController {
      use private keyword
      Generated Interface gives API
      */
+    @IBOutlet private weak var sequence: UILabel!
     @IBOutlet private weak var display: UILabel!
     
     private var userIsInTheMiddleOfTyping = false
     var userPressedPeriod = false
     
+    private var sequenceValue: String {
+        get {
+            print("sequenceValue get")
+            return sequence.text!
+        }
+        set {
+            print("sequenceValue set")
+            sequence.text = newValue
+        }
+    }
+    
     @IBAction private func tappedButton(sender: UIButton) {
         
         let digit = sender.currentTitle!
-        
-        if userIsInTheMiddleOfTyping {
+        print("in tappedButton \(digit)")
+        if userIsInTheMiddleOfTyping { // [CLEAN] if statements
+            print("in userIsInMiddleOfTyping")
             let textCurentlyInDisplay = display.text!
             display.text = textCurentlyInDisplay + digit
+            if !brain.isPartialResult {
+                print("in userIsInMiddleOfTyping !brain.isPartialResult")
+                sequenceValue += digit
+            }
         } else {
+            print("in userIsInMiddleOfTyping else")
             display.text = digit
+            if !brain.isPartialResult {
+                print("in userIsInMiddleOfTyping else !brain.isPartialResult")
+                sequenceValue = digit
+            }
         }
         userIsInTheMiddleOfTyping = true
+        
     }
     @IBAction func period(sender: UIButton) {
+        print("in func period")
         let period = sender.currentTitle!
         if !userPressedPeriod && !userIsInTheMiddleOfTyping {
+            print("in func period !userPressedPeriod && !userIsInTheMiddleOfTyping")
             display.text = period
             userPressedPeriod = true
             userIsInTheMiddleOfTyping = true
         }
         if !userPressedPeriod { // userIsInTheMiddleOfTyping is already true by default or else it would hit the previous if block
+            print("in func period !userPressedPeriod")
             let textCurentlyInDisplay = display.text!
             display.text = textCurentlyInDisplay + period
             userPressedPeriod = true
         }
+        sequenceValue += period
+    }
+    @IBAction func clearAll(sender: UIButton) {
+        display.text! = "0"
+        sequenceValue = "0"
+        print("in func clearAll")
     }
     
     /*
@@ -55,15 +87,14 @@ class ViewController: UIViewController {
     
     private var displayValue: Double {
         get {
-            print("in get")
+            print("in displayValue get")
             if display.text != "." {
-                print("display.text! is \(display.text!)")
                 return Double(display.text!)! // unwrapped because it might not be convertable (e.g. "hello")
             }
             return 0.0 // to capture for sqrt(.)
         }
         set {
-            print("in set")
+            print("in displayValue set")
             display.text = String(newValue) // newValue is a special keyword. use (e.g. displayValue = M_PI vs. display.text = String(M_PI)
         }
     }
@@ -72,17 +103,65 @@ class ViewController: UIViewController {
      the code to hook our model to controller
      */
     
+    private var userPressedBinaryOperator = false
     private var brain = CalculatorBrain()
     
-    @IBAction private  func performOperation(sender: UIButton) {
+    @IBAction private func tappedOperation(sender: UIButton) {
         //if userIsInTheMiddleOfTyping { // don't need because default value is 0. if uncommented, CalculatorBrain default accumulator is 0.0 already. When just setting math symbols, it will use default accumulator value of 0.0
+        print("in func tappedOperation")
         brain.setOperand(displayValue)
         userPressedPeriod = false
         userIsInTheMiddleOfTyping = false
         //}
         if let mathematicalSymbol = sender.currentTitle {
-            brain.performOperation(mathematicalSymbol)
+            print("in mathematicalSymbol")
+            //            guard !userPressedBinaryOperator else { return } // return if user did press binary op
+            //            switch mathematicalSymbol {
+            //            case "+": userPressedBinaryOperator = true
+            //                brain.performOperation(mathematicalSymbol)
+            //            case "-": userPressedBinaryOperator = true
+            //                brain.performOperation(mathematicalSymbol)
+            //            case "÷": userPressedBinaryOperator = true
+            //                brain.performOperation(mathematicalSymbol)
+            //            case "×": userPressedBinaryOperator = true
+            //                brain.performOperation(mathematicalSymbol)
+            //            default: brain.performOperation(mathematicalSymbol)
+            //            }
+            if (mathematicalSymbol == "+" && !userPressedBinaryOperator) || (mathematicalSymbol == "-" && !userPressedBinaryOperator) || (mathematicalSymbol == "×" && !userPressedBinaryOperator) ||  (mathematicalSymbol == "÷" && !userPressedBinaryOperator) { // user pressed a binary op
+                print("in mathematicalSymbol binaryOp && !userPressedBinaryOperator")
+                userPressedBinaryOperator = true
+                brain.performOperation(mathematicalSymbol)
+            } else if userPressedBinaryOperator && mathematicalSymbol != "=" {
+                print("in mathematicalSymbol binaryOp && mathematicalSymbol != =")
+                return
+            } else { // user pressed an unary operator or "="
+                 print("in mathematicalSymbol else")
+                brain.performOperation(mathematicalSymbol)
+            }
+            /*
+             guard let title = button.currentitle, operation = operations[title] else {
+             return
+             }
+             if case .binary(let method) = operation {
+             print(method(3,2))
+             }
+             else if .unary(let method) = operation {
+             print(method(3))
+             }
+             */
+            print("mathematicalSymbol is \(mathematicalSymbol)")
+            sequenceValue += mathematicalSymbol
+            
+            if brain.isPartialResult {
+                sequenceValue += "..."
+                print("in mathematicalSymbol brain.isPartial")
+            } else {
+                print("in mathematicalSymbol brain.isPartial else")
+                let noPeriods = sequenceValue.endIndex.advancedBy(-4) // [BUG] when you press
+                sequenceValue = sequenceValue.substringToIndex(noPeriods) + String(brain.operand) + "="
+            }
         }
+        print("sending brain.result to displayValue")
         displayValue = brain.result
     }
 }
