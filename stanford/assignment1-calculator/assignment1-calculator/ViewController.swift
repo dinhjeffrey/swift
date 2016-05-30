@@ -146,8 +146,8 @@ class ViewController: UIViewController {
              */
             print("mathematicalSymbol is \(mathematicalSymbol)")
             sequenceValue += mathematicalSymbol
-            
-            if !brain.isPartialResult {
+            print("brain.isPartialResult is \(brain.isPartialResult) and !brain.isPartialResult is \(!brain.isPartialResult)")
+            if brain.isPartialResult {
                 sequenceValue += "..."
                 print("in mathematicalSymbol brain.isPartial")
             }
