@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     private var brain = CalculatorBrain()
     private var binaryOperatorsInArray = ["−", "+", "÷", "×", "E", "xʸ"]
     private var binaryOperatorToUnhighlight = UIButton?()
+    private var lastAnswer = Double?()
     
     private var displayValue: String {
         get {
@@ -94,10 +95,31 @@ class ViewController: UIViewController {
         }
         sequenceValue += String(period)
     }
-    @IBAction func clearAll(sender: UIButton) {
+    @IBAction func tappedRandomFrom0to1(sender: UIButton) {
+        let random0to1 = drand48()
+        sequenceValue = String(random0to1)
+        displayValue = String(random0to1)
+    }
+    @IBAction func allClear(sender: UIButton) {
         displayValue = "0"
         sequenceValue = "0"
-        print("in func clearAll")
+        print("in func allClear")
+    }
+    @IBAction func clearEntry(sender: UIButton) {
+        let clearByOne = displayValue.endIndex.advancedBy(-1)
+        sequenceValue = sequenceValue.substringToIndex(clearByOne)
+        displayValue = displayValue.substringToIndex(clearByOne)
+        if sequenceValue.characters.count == 0 {
+            sequenceValue = "0"
+        }
+        if displayValue.characters.count == 0 {
+            displayValue = "0"
+        }
+        print("in func clearEntry")
+    }
+    @IBAction func tappedAnsButton(sender: UIButton) {
+        displayValue = String(lastAnswer!)
+        print("in tappedAnsButton")
     }
     @IBAction private func tappedOperation(sender: UIButton) {
         print("in func tappedOperation")
@@ -131,6 +153,8 @@ class ViewController: UIViewController {
         }
         print("sending brain.result to displayValue")
         displayValue = String(brain.result)
+        lastAnswer = brain.result
+        print("setting lastAnswer to brain.result")
     }
 }
 
