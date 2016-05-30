@@ -88,25 +88,36 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
         if let operation = operations[symbol] {
             print("operation symbol is \(operation)")
             switch operation {
+                
             case .Constant(let value): accumulator = value
             descriptionAccumulator = symbol
+            pending = nil
+            print("in case .Constant")
+                
             case .UnaryOperation(let function, let descriptionFunction): accumulator = function(accumulator)
             descriptionAccumulator = descriptionFunction(descriptionAccumulator)
-                print("in case .UnaryOperation")
+            pending = nil
+            print("in case .UnaryOperation")
+                
             case .BinaryOperation(let function, let descriptionFunction):
                 print("in case .BinaryOperation")
-                if (pending != nil) {
+                if pending != nil && isPartialResult {
+                    print("in case .BinaryOperation != nil && isPartialResult")
+                    pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
+                } else if pending != nil {
                     print("in case .BinaryOperation != nil")
                     isPartialResult = false
+                    print("sending to executePendingBinaryOperation()")
                     executePendingBinaryOperation()
-                } else {
-                    print("in case .BinaryOperation else")
+                } else { // pending is not nil
+                    print("in case .BinaryOperation else and pending is \(pending)")
                     isPartialResult = true
-                    pending = nil
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
                 }
+                
             case .Equals: executePendingBinaryOperation()
-                print("in case .Equals")
+            print("in case .Equals")
+                
             }
         }
     }
@@ -119,9 +130,9 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
             descriptionAccumulator = pending!.descriptionFunction(pending!.descriptionOperand, descriptionAccumulator)
             pending = nil
-            print("in executePendingBinaryOperation. binary operation pending false")
+            print("in executePendingBinaryOperation. accumulator = \(accumulator) and descriptionAccumulator = \(descriptionAccumulator)")
         } else {
-            print("in executePendingBinaryOperation else. binary operation pending true")
+            print("in executePendingBinaryOperation else. pending is nil")
         }
     }
     /*

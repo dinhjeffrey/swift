@@ -102,12 +102,13 @@ class ViewController: UIViewController {
     @IBAction private func tappedOperation(sender: UIButton) {
         //if userIsInTheMiddleOfTyping { // don't need because default value is 0. if uncommented, CalculatorBrain default accumulator is 0.0 already. When just setting math symbols, it will use default accumulator value of 0.0
         print("in func tappedOperation")
-        brain.setOperand(Double(displayValue)!)
         userPressedPeriod = false
         userIsInTheMiddleOfTyping = false
+        print("sending displayValue to brain.setOperand")
+        brain.setOperand(Double(displayValue)!)
         //}
         if let mathematicalSymbol = sender.currentTitle {
-            print("in mathematicalSymbol")
+            print("in mathematicalSymbol. mathematicalSymbol is \(mathematicalSymbol). userPressedBinaryOperator is \(userPressedBinaryOperator)")
             //            guard !userPressedBinaryOperator else { return } // return if user did press binary op
             //            switch mathematicalSymbol {
             //            case "+": userPressedBinaryOperator = true
@@ -120,17 +121,18 @@ class ViewController: UIViewController {
             //                brain.performOperation(mathematicalSymbol)
             //            default: brain.performOperation(mathematicalSymbol)
             //            }
-            if (mathematicalSymbol == "+" && !userPressedBinaryOperator) || (mathematicalSymbol == "-" && !userPressedBinaryOperator) || (mathematicalSymbol == "×" && !userPressedBinaryOperator) ||  (mathematicalSymbol == "÷" && !userPressedBinaryOperator) { // user pressed a binary op
-                print("in mathematicalSymbol binaryOp && !userPressedBinaryOperator")
-                userPressedBinaryOperator = true
+//            if (mathematicalSymbol == "+" && !userPressedBinaryOperator) || (mathematicalSymbol == "−" && !userPressedBinaryOperator) || (mathematicalSymbol == "×" && !userPressedBinaryOperator) ||  (mathematicalSymbol == "÷" && !userPressedBinaryOperator) {
+//                print("in mathematicalSymbol binaryOp && !userPressedBinaryOperator")
+//                userPressedBinaryOperator = true
+//                print("sending '\(mathematicalSymbol)' to brain.performOperation")
+//                brain.performOperation(mathematicalSymbol)
+//            } else if userPressedBinaryOperator && mathematicalSymbol != "=" {
+//                print("in mathematicalSymbol binaryOp && mathematicalSymbol != =")
+//                return
+//            } else { // user pressed an unary operator or "="
+//                print("in mathematicalSymbol else")
                 brain.performOperation(mathematicalSymbol)
-            } else if userPressedBinaryOperator && mathematicalSymbol != "=" {
-                print("in mathematicalSymbol binaryOp && mathematicalSymbol != =")
-                return
-            } else { // user pressed an unary operator or "="
-                print("in mathematicalSymbol else")
-                brain.performOperation(mathematicalSymbol)
-            }
+//            }
             /*
              guard let title = button.currentitle, operation = operations[title] else {
              return
@@ -145,11 +147,12 @@ class ViewController: UIViewController {
             print("mathematicalSymbol is \(mathematicalSymbol)")
             sequenceValue += mathematicalSymbol
             
-            if brain.isPartialResult {
+            if !brain.isPartialResult {
                 sequenceValue += "..."
                 print("in mathematicalSymbol brain.isPartial")
-            } else {
-                print("in mathematicalSymbol brain.isPartial else")
+            }
+            if brain.isPartialResult && mathematicalSymbol == "=" {
+                print("in mathematicalSymbol brain.isPartial else and sequenceValue is \(sequenceValue)")
                 let noPeriods = sequenceValue.endIndex.advancedBy(-4) // [BUG] when you press
                 sequenceValue = sequenceValue.substringToIndex(noPeriods) + String(brain.operand) + "="
             }
