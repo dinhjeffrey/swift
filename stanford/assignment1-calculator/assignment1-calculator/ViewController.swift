@@ -20,71 +20,15 @@ class ViewController: UIViewController {
     @IBOutlet private weak var display: UILabel!
     
     private var userIsInTheMiddleOfTyping = false
-    var userPressedPeriod = false
-    
-    private var sequenceValue: String {
-        get {
-            print("sequenceValue get")
-            return sequence.text!
-        }
-        set {
-            print("sequenceValue set")
-            sequence.text = newValue
-        }
-    }
-    
-    @IBAction private func tappedButton(sender: UIButton) {
-        
-        let digit = sender.currentTitle!
-        print("in tappedButton \(digit)")
-        if userIsInTheMiddleOfTyping { // [CLEAN] if statements
-            print("in userIsInMiddleOfTyping")
-            let textCurentlyInDisplay = display.text!
-            display.text = textCurentlyInDisplay + digit
-            if !brain.isPartialResult {
-                print("in userIsInMiddleOfTyping !brain.isPartialResult")
-                sequenceValue += digit
-            }
-        } else {
-            print("in userIsInMiddleOfTyping else")
-            display.text = digit
-            if !brain.isPartialResult {
-                print("in userIsInMiddleOfTyping else !brain.isPartialResult")
-                sequenceValue = digit
-            }
-        }
-        userIsInTheMiddleOfTyping = true
-        
-    }
-    @IBAction func period(sender: UIButton) {
-        print("in func period")
-        let period = sender.currentTitle!
-        if !userPressedPeriod && !userIsInTheMiddleOfTyping {
-            print("in func period !userPressedPeriod && !userIsInTheMiddleOfTyping")
-            display.text = period
-            userPressedPeriod = true
-            userIsInTheMiddleOfTyping = true
-        }
-        if !userPressedPeriod { // userIsInTheMiddleOfTyping is already true by default or else it would hit the previous if block
-            print("in func period !userPressedPeriod")
-            let textCurentlyInDisplay = display.text!
-            display.text = textCurentlyInDisplay + period
-            userPressedPeriod = true
-        }
-        sequenceValue += period
-    }
-    @IBAction func clearAll(sender: UIButton) {
-        display.text! = "0"
-        sequenceValue = "0"
-        print("in func clearAll")
-    }
+    private var userPressedPeriod = false
+    private var userPressedBinaryOperator = false
+    private var brain = CalculatorBrain()
     
     /*
      computed property (vs stored property var)
      whenever we get the display, we get it returned as a Double
      we can also set it
      */
-    
     private var displayValue: Double {
         get {
             print("in displayValue get")
@@ -98,14 +42,63 @@ class ViewController: UIViewController {
             display.text = String(newValue) // newValue is a special keyword. use (e.g. displayValue = M_PI vs. display.text = String(M_PI)
         }
     }
+    private var sequenceValue: String {
+        get {
+            print("sequenceValue get")
+            return sequence.text!
+        }
+        set {
+            print("sequenceValue set")
+            sequence.text = newValue
+        }
+    }
+    
+    @IBAction private func tappedButton(sender: UIButton) {
+        let digit = Double(sender.currentTitle!)!
+        print("in tappedButton \(digit)")
+        if userIsInTheMiddleOfTyping { // [CLEAN] if statements
+            print("in userIsInMiddleOfTyping")
+            displayValue = digit
+            if !brain.isPartialResult {
+                print("in userIsInMiddleOfTyping !brain.isPartialResult")
+                sequenceValue += String(digit)
+            }
+        } else {
+            print("in userIsInMiddleOfTyping else")
+            displayValue = digit
+            if !brain.isPartialResult {
+                print("in userIsInMiddleOfTyping else !brain.isPartialResult")
+                sequenceValue = String(digit)
+            }
+        }
+        userIsInTheMiddleOfTyping = true
+        
+    }
+    @IBAction func period(sender: UIButton) {
+        print("in func period")
+        let period = Double(sender.currentTitle!)!
+        if !userPressedPeriod && !userIsInTheMiddleOfTyping {
+            print("in func period !userPressedPeriod && !userIsInTheMiddleOfTyping")
+            displayValue = period
+            userPressedPeriod = true
+            userIsInTheMiddleOfTyping = true
+        }
+        if !userPressedPeriod { // userIsInTheMiddleOfTyping is already true by default or else it would hit the previous if block
+            print("in func period !userPressedPeriod")
+            displayValue += period
+            userPressedPeriod = true
+        }
+        sequenceValue += String(period)
+    }
+    @IBAction func clearAll(sender: UIButton) {
+        displayValue = 0
+        sequenceValue = "0"
+        print("in func clearAll")
+    }
     
     /*
      the code to hook our model to controller
      */
-    
-    private var userPressedBinaryOperator = false
-    private var brain = CalculatorBrain()
-    
     @IBAction private func tappedOperation(sender: UIButton) {
         //if userIsInTheMiddleOfTyping { // don't need because default value is 0. if uncommented, CalculatorBrain default accumulator is 0.0 already. When just setting math symbols, it will use default accumulator value of 0.0
         print("in func tappedOperation")
@@ -135,7 +128,7 @@ class ViewController: UIViewController {
                 print("in mathematicalSymbol binaryOp && mathematicalSymbol != =")
                 return
             } else { // user pressed an unary operator or "="
-                 print("in mathematicalSymbol else")
+                print("in mathematicalSymbol else")
                 brain.performOperation(mathematicalSymbol)
             }
             /*
