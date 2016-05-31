@@ -406,7 +406,6 @@
                     </view>
                     <connections>
                         <outlet property="display" destination="oal-sn-VAE" id="Lu3-Re-GJa"/>
-                        <outlet property="sequence" destination="de0-ck-AWc" id="jVH-wF-jow"/>
                         <outlet property="sequenceLabel" destination="de0-ck-AWc" id="RzU-jp-0Q5"/>
                     </connections>
                 </viewController>

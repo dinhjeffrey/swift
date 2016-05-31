@@ -16,8 +16,9 @@
 import Foundation // models are UI independent so it never imports UIKit. Nothing in here about UI, all calculations
 
 class CalculatorBrain { // no super class since CalculatorBrain is the base model
-    private var accumulator = 0.0
-    var operand = 0.0
+    var accumulator = Double(0)
+    var operand = Double(0)
+    var binaryOperatorSetOperandTracker = false // starts off false, setOperand->true, binaryOperator->false
     
     func setOperand(operand: Double) {
         self.operand = operand
@@ -88,33 +89,37 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             print("operation symbol is \(operation)")
             switch operation {
                 
-            case .Constant(let value): accumulator = value
-            descriptionAccumulator = symbol
-            print("in case .Constant")
+            case .Constant(let value):
+                accumulator = value
+                descriptionAccumulator = symbol
+                print("in case .Constant")
                 
-            case .UnaryOperation(let function, let descriptionFunction): accumulator = function(accumulator)
-            descriptionAccumulator = descriptionFunction(descriptionAccumulator)
-            // pending = nil
-            print("in case .UnaryOperation")
+            case .UnaryOperation(let function, let descriptionFunction):
+                accumulator = function(accumulator)
+                descriptionAccumulator = descriptionFunction(descriptionAccumulator)
+                print("in case .UnaryOperation")
                 
             case .BinaryOperation(let function, let descriptionFunction):
                 print("in case .BinaryOperation")
-                if pending != nil && isPartialResult {
+                if binaryOperatorSetOperandTracker == true && pending != nil { /* clicking a digit sets binaryOperatorSetOperandTracker = true and clicking a binaryOperator sets it to = false */
+                    print("in binarOperatorSetOperandTracker and intializing executePendingBinaryOperation and set new pending")
+                    isPartialResult = true
+                    executePendingBinaryOperation()
+                    pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
+                } else if pending != nil { /* goes here on second binary operation click */
                     print("in case .BinaryOperation != nil && isPartialResult")
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
-                } else if pending != nil {
-                    print("in case .BinaryOperation != nil")
-                    isPartialResult = false
-                    print("sending to executePendingBinaryOperation()")
-                    executePendingBinaryOperation()
-                } else { // pending is not nil
+                } else { /* goes here on first binary operation click */
                     print("in case .BinaryOperation else and pending is \(pending)")
                     isPartialResult = true
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
                 }
+                binaryOperatorSetOperandTracker = false
+                print("set binaryOperatorSetOperandTracker = false")
                 
-            case .Equals: executePendingBinaryOperation()
-            print("in case .Equals")
+            case .Equals:
+                executePendingBinaryOperation()
+                print("in case .Equals")
                 
             }
         }
@@ -138,7 +143,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      because when we type a number and not the operation yet, we want that operation to be nil and when we have one, we set it to that
      
      */
-    private var pending: PendingBinaryOperationInfo?
+    var pending: PendingBinaryOperationInfo?
     
     /*
      What is a struct?
@@ -147,7 +152,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      We initialize Structs by passing in the argument every vars defined in the Struct
      when we click `5 *`, when we hit `*`, we store `5` into firstOperand.
      */
-    private struct PendingBinaryOperationInfo {
+    struct PendingBinaryOperationInfo {
         var binaryFunction: (Double, Double) -> Double
         var firstOperand: Double
         var descriptionFunction: (String, String) -> String

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
      Generated Interface gives API
      */
     @IBOutlet private weak var display: UILabel!
+    @IBOutlet weak var sequenceLabel: UILabel!
 
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
@@ -62,6 +63,8 @@ class ViewController: UIViewController {
             displayValue = digit
         }
         userIsInTheMiddleOfTyping = true
+        brain.binaryOperatorSetOperandTracker = true
+        print("set binaryOperatorSetOperandTracker = true")
     }
     @IBAction func period(sender: UIButton) {
         print("in func period")
@@ -75,6 +78,9 @@ class ViewController: UIViewController {
     }
     @IBAction func allClear(sender: UIButton) {
         displayValue = "0"
+        brain.accumulator = 0
+        brain.operand = 0
+        brain.pending = nil
         print("in func allClear")
     }
     @IBAction func clearEntry(sender: UIButton) {
@@ -90,6 +96,7 @@ class ViewController: UIViewController {
         print("in tappedAnsButton")
     }
     @IBAction private func tappedOperation(sender: UIButton) {
+        pressAnOperator()
         print("in func tappedOperation")
         userIsInTheMiddleOfTyping = false
         print("sending displayValue to brain.setOperand")
@@ -118,10 +125,13 @@ class ViewController: UIViewController {
     }
 }
 
+/*
+ sequenceLabel
+ */
 extension ViewController {
-    
-    @IBOutlet weak var sequenceLabel: UILabel!
-    
+    func pressAnOperator() {
+        sequenceLabel.text = "MAPLESTORY"
+    }
 }
 
 /*
