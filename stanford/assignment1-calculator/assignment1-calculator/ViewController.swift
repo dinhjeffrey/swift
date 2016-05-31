@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     private var unaryOperatorsInArray = ["√", "sin", "cos", "tan", "x!", "log"]
     private var constantsInArray = ["π", "e"]
     private var binaryOperatorToUnhighlight = UIButton?()
-    private var lastAnswer = Double?()
+    private var lastAnswer = Double(0)
     private var currentDigit = String?()
     
     private var displayValue: String {
@@ -88,6 +88,7 @@ class ViewController: UIViewController {
         brain.accumulator = 0
         brain.operand = 0
         brain.pending = nil
+        unhighlight(binaryOperatorToUnhighlight!)
         print("in func allClear")
         print("sending to sequenceAllClear()")
         sequenceAllClear()
@@ -101,8 +102,10 @@ class ViewController: UIViewController {
         print("in func clearEntry")
     }
     @IBAction func tappedAnsButton(sender: UIButton) {
-        displayValue = String(lastAnswer!)
+        displayValue = String(lastAnswer)
         print("in tappedAnsButton")
+        print("sending to sequenceAnswer()")
+        sequenceAnswer()
     }
     @IBAction private func tappedOperation(sender: UIButton) {
         print("in func tappedOperation")
@@ -114,7 +117,7 @@ class ViewController: UIViewController {
             sequencePressedAnOperator(mathematicalSymbol)
             // highlight
             if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) &&
-                (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)){
+                (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)) {
                 print("initializing unhighlight()")
                 unhighlight(binaryOperatorToUnhighlight!)
             }
@@ -160,6 +163,11 @@ extension ViewController {
     func sequenceAllClear() {
         print("in sequenceAllClear")
         sequenceValue = " "
+    }
+    func sequenceClearEntry() {}
+    func sequenceAnswer() {
+        print("in sequenceAnswer")
+        sequenceValue += String(lastAnswer)
     }
     func sequencePressedADigit(digit: String) {
         print("in sequencePressedADigit")
