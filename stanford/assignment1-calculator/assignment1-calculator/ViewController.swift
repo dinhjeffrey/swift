@@ -19,7 +19,7 @@ class ViewController: UIViewController {
      */
     @IBOutlet private weak var display: UILabel!
     @IBOutlet weak var sequenceLabel: UILabel!
-
+    
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
     private var brain = CalculatorBrain()
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         }
         set {
             print("in displayValue set")
-            display.text = String(newValue) // newValue is a special keyword.
+            display.text = newValue // newValue is a special keyword.
         }
     }
     func unhighlight(button: UIButton) {
@@ -46,13 +46,15 @@ class ViewController: UIViewController {
     }
     func highlight(button : UIButton) {
         print("in highlight()")
-        let redBorder = UIColor( red: 0, green: 0, blue:0, alpha: 0.3 )
-        button.layer.borderWidth = 4
+        let redBorder = UIColor( red: 0, green: 0, blue:0, alpha: 1.0 )
+        button.layer.borderWidth = 5
         button.layer.borderColor = redBorder.CGColor
     }
     
     @IBAction private func tappedButton(sender: UIButton) {
         let digit = sender.currentTitle!
+        print("sending to sequencePressedADigit(\(digit))")
+        sequencePressedADigit(digit)
         print("in tappedButton \(digit)")
         currentDigit = digit
         if userIsInTheMiddleOfTyping { // [CLEAN] if statements
@@ -70,11 +72,16 @@ class ViewController: UIViewController {
         print("in func period")
         if !displayValue.characters.contains(".") {
             displayValue += sender.currentTitle!
+            print("sending to sequencePeriod('.')")
+            sequencePeriod(".")
         }
     }
     @IBAction func tappedRandomFrom0to1(sender: UIButton) {
+        print("in tappedRandomFrom0to1")
         let random0to1 = drand48()
         displayValue = String(random0to1)
+        print("sending to sequenceRandom0to1(\(random0to1))")
+        sequenceRandom0to1(String(random0to1))
     }
     @IBAction func allClear(sender: UIButton) {
         displayValue = "0"
@@ -82,6 +89,8 @@ class ViewController: UIViewController {
         brain.operand = 0
         brain.pending = nil
         print("in func allClear")
+        print("sending to sequenceAllClear()")
+        sequenceAllClear()
     }
     @IBAction func clearEntry(sender: UIButton) {
         let clearByOne = displayValue.endIndex.advancedBy(-1)
@@ -96,14 +105,15 @@ class ViewController: UIViewController {
         print("in tappedAnsButton")
     }
     @IBAction private func tappedOperation(sender: UIButton) {
-        pressAnOperator()
         print("in func tappedOperation")
         userIsInTheMiddleOfTyping = false
         print("sending displayValue to brain.setOperand")
         brain.setOperand(Double(displayValue)!)
         if let mathematicalSymbol = sender.currentTitle {
+            print("sending to sequencePressedAnOperator(\(mathematicalSymbol))")
+            sequencePressedAnOperator(mathematicalSymbol)
             // highlight
-            if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) ||
+            if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) &&
                 (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)){
                 print("initializing unhighlight()")
                 unhighlight(binaryOperatorToUnhighlight!)
@@ -129,8 +139,35 @@ class ViewController: UIViewController {
  sequenceLabel
  */
 extension ViewController {
-    func pressAnOperator() {
-        sequenceLabel.text = "MAPLESTORY"
+    var sequenceValue: String {
+        get {
+            print("in sequenceValue.get")
+            return sequenceLabel.text!
+        }
+        set {
+            print("in sequenceValue.set")
+            sequenceLabel.text = newValue
+        }
+    }
+    func sequencePeriod(period: String) {
+        print("in sequencePeriod")
+        sequenceValue += period
+    }
+    func sequenceRandom0to1(randomNumber: String) {
+        print("in sequenceRandom0to1")
+        sequenceValue += randomNumber
+    }
+    func sequenceAllClear() {
+        print("in sequenceAllClear")
+        sequenceValue = " "
+    }
+    func sequencePressedADigit(digit: String) {
+        print("in sequencePressedADigit")
+        sequenceValue += digit
+    }
+    func sequencePressedAnOperator(mathematicalSymbol: String) {
+        print("in sequencePressedAnOperator")
+        sequenceValue += mathematicalSymbol
     }
 }
 
