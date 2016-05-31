@@ -18,7 +18,7 @@ class ViewController: UIViewController {
      Generated Interface gives API
      */
     @IBOutlet private weak var display: UILabel!
-    @IBOutlet weak var sequenceLabel: UILabel!
+    @IBOutlet private weak var sequenceLabel: UILabel!
     
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
@@ -40,11 +40,11 @@ class ViewController: UIViewController {
             display.text = newValue // newValue is a special keyword.
         }
     }
-    func unhighlight(button: UIButton) {
+    private func unhighlight(button: UIButton) {
         print("in unhighlight()")
         button.layer.borderWidth = 0
     }
-    func highlight(button : UIButton) {
+    private func highlight(button : UIButton) {
         print("in highlight()")
         let redBorder = UIColor( red: 0, green: 0, blue:0, alpha: 1.0 )
         button.layer.borderWidth = 5
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         brain.binaryOperatorSetOperandTracker = true
         print("set binaryOperatorSetOperandTracker = true")
     }
-    @IBAction func period(sender: UIButton) {
+    @IBAction private func period(sender: UIButton) {
         print("in func period")
         if !displayValue.characters.contains(".") {
             displayValue += sender.currentTitle!
@@ -76,14 +76,14 @@ class ViewController: UIViewController {
             sequencePeriod(".")
         }
     }
-    @IBAction func tappedRandomFrom0to1(sender: UIButton) {
+    @IBAction private func tappedRandomFrom0to1(sender: UIButton) {
         print("in tappedRandomFrom0to1")
         let random0to1 = drand48()
         displayValue = String(random0to1)
         print("sending to sequenceRandom0to1(\(random0to1))")
         sequenceRandom0to1(String(random0to1))
     }
-    @IBAction func allClear(sender: UIButton) {
+    @IBAction private func allClear(sender: UIButton) {
         displayValue = "0"
         brain.accumulator = 0
         brain.operand = 0
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         print("sending to sequenceAllClear()")
         sequenceAllClear()
     }
-    @IBAction func clearEntry(sender: UIButton) {
+    @IBAction private func clearEntry(sender: UIButton) {
         let clearByOne = displayValue.endIndex.advancedBy(-1)
         displayValue = displayValue.substringToIndex(clearByOne)
         if displayValue.characters.count == 0 {
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         }
         print("in func clearEntry")
     }
-    @IBAction func tappedAnsButton(sender: UIButton) {
+    @IBAction private func tappedAnsButton(sender: UIButton) {
         displayValue = String(lastAnswer)
         print("in tappedAnsButton")
         print("sending to sequenceAnswer()")
@@ -113,8 +113,6 @@ class ViewController: UIViewController {
         print("sending displayValue to brain.setOperand")
         brain.setOperand(Double(displayValue)!)
         if let mathematicalSymbol = sender.currentTitle {
-            print("sending to sequencePressedAnOperator(\(mathematicalSymbol))")
-            sequencePressedAnOperator(mathematicalSymbol)
             // highlight
             if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) &&
                 (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)) {
@@ -130,6 +128,8 @@ class ViewController: UIViewController {
             print("in mathematicalSymbol. mathematicalSymbol is \(mathematicalSymbol). userPressedBinaryOperator is \(userPressedBinaryOperator) and sending mathematicalSymbol to brain.performOperation")
             brain.performOperation(mathematicalSymbol)
             print("brain.isPartialResult is \(brain.isPartialResult)")
+            print("sending to sequencePressedAnOperator(\(mathematicalSymbol))")
+            sequencePressedAnOperator(mathematicalSymbol)
         }
         print("sending brain.result to displayValue")
         displayValue = String(brain.result)
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
 /*
  sequenceLabel
  */
-extension ViewController {
+private extension ViewController {
     var sequenceValue: String {
         get {
             print("in sequenceValue.get")
@@ -171,11 +171,17 @@ extension ViewController {
     }
     func sequencePressedADigit(digit: String) {
         print("in sequencePressedADigit")
-        sequenceValue += digit
+        if !brain.isPartialResult {
+            sequenceValue += digit
+        }
     }
     func sequencePressedAnOperator(mathematicalSymbol: String) {
         print("in sequencePressedAnOperator")
-        sequenceValue += mathematicalSymbol
+        if brain.isPartialResult {
+            sequenceValue += mathematicalSymbol + "..."
+        } else {
+            sequenceValue = brain.descriptionAccumulator + " ="
+        }
     }
 }
 

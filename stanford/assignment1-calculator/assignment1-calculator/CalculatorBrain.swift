@@ -19,6 +19,8 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
     var accumulator = Double(0)
     var operand = Double(0)
     var binaryOperatorSetOperandTracker = false // starts off false, setOperand->true, binaryOperator->false
+    var isPartialResult = false
+    var descriptionAccumulator = "0"
     
     func setOperand(operand: Double) {
         self.operand = operand
@@ -38,7 +40,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      make this look a lot better with type inference
      $0, $1, $2 .. are default arguments
      */
-    var operations: [String: Operation] = [
+    private var operations: [String: Operation] = [
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt, {"√(\($0))"}),
@@ -67,7 +69,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      case Some<T>
      }
      */
-    enum Operation { // lower case in swift 3
+    private enum Operation { // lower case in swift 3
         case Constant(Double)
         case UnaryOperation((Double) -> Double, (String) -> String)
         case BinaryOperation((Double, Double) -> Double, (String, String) -> String)
@@ -133,6 +135,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
             descriptionAccumulator = pending!.descriptionFunction(pending!.descriptionOperand, descriptionAccumulator)
             pending = nil
+            isPartialResult = false
             print("in executePendingBinaryOperation. accumulator = \(accumulator) and descriptionAccumulator = \(descriptionAccumulator)")
         } else {
             print("in executePendingBinaryOperation else. pending is nil")
@@ -153,10 +156,10 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      when we click `5 *`, when we hit `*`, we store `5` into firstOperand.
      */
     struct PendingBinaryOperationInfo {
-        var binaryFunction: (Double, Double) -> Double
-        var firstOperand: Double
-        var descriptionFunction: (String, String) -> String
-        var descriptionOperand: String
+        private var binaryFunction: (Double, Double) -> Double
+        private var firstOperand: Double
+        private var descriptionFunction: (String, String) -> String
+        private var descriptionOperand: String
     }
     /*
      read only property since there is no set
@@ -168,10 +171,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             return accumulator
         }
     }
-    
-    var isPartialResult = false
-    private var descriptionAccumulator = "0"
-    var description: String {
+    private var description: String {
         get {
             if pending == nil {
                 print("in description get if pending == nil")
@@ -183,10 +183,3 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
         }
     }
 }
-// factorial function has to be outside of the class to work
-//func factorial(N: Double) -> Double {
-//    if N <= 1 {
-//        return 1
-//    }
-//    return N * factorial(N - 1.0)
-//}
