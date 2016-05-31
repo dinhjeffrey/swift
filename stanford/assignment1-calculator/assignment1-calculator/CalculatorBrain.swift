@@ -13,7 +13,6 @@
  everytime you create a new class, you have 1 free initializer that takes no arguments
  now you can use CalculatorBrain's API
  */
-import UIKit
 import Foundation // models are UI independent so it never imports UIKit. Nothing in here about UI, all calculations
 
 class CalculatorBrain { // no super class since CalculatorBrain is the base model

@@ -17,9 +17,8 @@ class ViewController: UIViewController {
      use private keyword
      Generated Interface gives API
      */
-    @IBOutlet private weak var sequence: UILabel!
     @IBOutlet private weak var display: UILabel!
-    
+
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
     private var brain = CalculatorBrain()
@@ -117,6 +116,12 @@ class ViewController: UIViewController {
         lastAnswer = brain.result
         print("setting lastAnswer to brain.result")
     }
+}
+
+extension ViewController {
+    
+    @IBOutlet weak var sequenceLabel: UILabel!
+    
 }
 
 /*
