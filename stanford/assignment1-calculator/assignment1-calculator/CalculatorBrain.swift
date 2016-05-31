@@ -91,12 +91,11 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
                 
             case .Constant(let value): accumulator = value
             descriptionAccumulator = symbol
-            pending = nil
             print("in case .Constant")
                 
             case .UnaryOperation(let function, let descriptionFunction): accumulator = function(accumulator)
             descriptionAccumulator = descriptionFunction(descriptionAccumulator)
-            pending = nil
+            // pending = nil
             print("in case .UnaryOperation")
                 
             case .BinaryOperation(let function, let descriptionFunction):
