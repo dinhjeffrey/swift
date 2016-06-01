@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
-    private var brain = CalculatorBrain()
+    private lazy var brain = CalculatorBrain()
     private var binaryOperatorsInArray = ["−", "+", "÷", "×", "E", "xʸ"]
     private var unaryOperatorsInArray = ["√", "sin", "cos", "tan", "x!", "log"]
     private var constantsInArray = ["π", "e"]
