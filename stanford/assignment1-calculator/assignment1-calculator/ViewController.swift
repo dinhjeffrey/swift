@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     private var displayValue: String {
         get {
             print("in displayValue get")
-            return display.text!
+            return display.text!   //?? "0" // nil colescing operator
         }
         set {
             print("in displayValue set")
@@ -90,8 +90,8 @@ class ViewController: UIViewController {
         brain.operand = 0
         userIsInTheMiddleOfTyping = false
         brain.pending = nil
-        if let unwrapped = binaryOperatorToUnhighlight {
-            unhighlight(unwrapped)
+        if let binaryOperatorToUnhighlight = binaryOperatorToUnhighlight {
+            unhighlight(binaryOperatorToUnhighlight)
         }
         print("sending to sequenceAllClear()")
         sequenceAllClear()
