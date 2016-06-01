@@ -84,12 +84,15 @@ class ViewController: UIViewController {
         sequenceRandom0to1(String(random0to1))
     }
     @IBAction private func allClear(sender: UIButton) {
+        print("in func allClear")
         displayValue = "0"
         brain.accumulator = 0
         brain.operand = 0
+        userIsInTheMiddleOfTyping = false
         brain.pending = nil
-        unhighlight(binaryOperatorToUnhighlight!)
-        print("in func allClear")
+        if let unwrapped = binaryOperatorToUnhighlight {
+            unhighlight(unwrapped)
+        }
         print("sending to sequenceAllClear()")
         sequenceAllClear()
     }

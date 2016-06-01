@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment1-calculator/CalculatorBrain.swift"
-            timestampString = "486364665.669545"
+            timestampString = "486431416.776638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "CalculatorBrain"
             landmarkType = "3">
          </BreakpointContent>
