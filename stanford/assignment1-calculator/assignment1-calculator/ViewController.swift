@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     private var displayValue: String {
         get {
             print("in displayValue get")
-            return display.text!   //?? "0" // nil colescing operator
+            return display.text!   //?? "0" // default operator
         }
         set {
             print("in displayValue set")
