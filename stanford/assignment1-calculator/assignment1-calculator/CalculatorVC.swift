@@ -11,7 +11,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class CalculatorVC: UIViewController {
     
     /*
      all of our methods in our ViewController and CalculatorBrain is public
@@ -146,7 +146,7 @@ class ViewController: UIViewController {
 /*
  sequenceLabel
  */
-private extension ViewController {
+private extension CalculatorVC {
     var sequenceValue: String {
         get {
             print("in sequenceValue.get")
