@@ -6,19 +6,22 @@
 //  Copyright © 2016 jeffrey dinh. All rights reserved.
 //
 
-/******TODO: don't need arguments for some actions such as Ans button *******/
+/******************************************************
+ ******************************************************
+ ******************************************************
+ 
+                        TODO:
+ * don't need arguments for some actions such as Ans button
+ 
+ ******************************************************
+ ******************************************************
+ ******************************************************/
 
 import UIKit
 import Foundation
 
 class CalculatorVC: UIViewController {
     
-    /*
-     all of our methods in our ViewController and CalculatorBrain is public
-     BUT we don't want that because we dont want a func in our model to call a func in our controller
-     use private keyword
-     Generated Interface gives API
-     */
     @IBOutlet private weak var display: UILabel!
     @IBOutlet private weak var sequenceLabel: UILabel!
     
@@ -35,7 +38,7 @@ class CalculatorVC: UIViewController {
     private var displayValue: String {
         get {
             print("in displayValue get")
-            return display.text!   //?? "0" // default operator
+            return display.text!   // ?? "0" // default operator
         }
         set {
             print("in displayValue set")
@@ -143,9 +146,7 @@ class CalculatorVC: UIViewController {
     }
 }
 
-/*
- sequenceLabel
- */
+/**** sequenceLabel ****/
 private extension CalculatorVC {
     var sequenceValue: String {
         get {

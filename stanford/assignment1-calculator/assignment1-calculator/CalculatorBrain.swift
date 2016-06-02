@@ -172,14 +172,5 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
     private var description: String { // don't need get if that is the only property
         print("in description get")
         return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "") ?? descriptionAccumulator
-        /*
-         if pending == nil {
-         print("in description get if pending == nil")
-         return descriptionAccumulator
-         } else {
-         print("in description get else")
-         return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "")
-         }
-         */
     }
 }
