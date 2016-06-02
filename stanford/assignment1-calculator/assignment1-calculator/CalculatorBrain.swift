@@ -91,17 +91,17 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             print("operation symbol is \(operation)")
             switch operation {
                 
-            case .Constant(let value):
+            case let .Constant(value):
                 accumulator = value
                 descriptionAccumulator = symbol
                 print("in case .Constant")
                 
-            case .UnaryOperation(let function, let descriptionFunction):
+            case let .UnaryOperation(function, descriptionFunction):
                 accumulator = function(accumulator)
                 descriptionAccumulator = descriptionFunction(descriptionAccumulator)
                 print("in case .UnaryOperation")
                 
-            case .BinaryOperation(let function, let descriptionFunction):
+            case let .BinaryOperation(function, descriptionFunction):
                 print("in case .BinaryOperation")
                 if binaryOperatorSetOperandTracker == true && pending != nil { /* clicking a digit sets binaryOperatorSetOperandTracker = true and clicking a binaryOperator sets it to = false */
                     print("in binarOperatorSetOperandTracker and intializing executePendingBinaryOperation and set new pending")

@@ -6,6 +6,8 @@
 //  Copyright © 2016 jeffrey dinh. All rights reserved.
 //
 
+/******TODO: don't need arguments for some actions such as Ans button *******/
+
 import UIKit
 import Foundation
 
