@@ -41,21 +41,21 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      $0, $1, $2 .. are default arguments
      */
     private var operations: [String: Operation] = [
-        "π" : Operation.Constant(M_PI),
-        "e" : Operation.Constant(M_E),
-        "√" : Operation.UnaryOperation(sqrt, {"√(\($0))"}),
-        "sin" : Operation.UnaryOperation(sin, {"sin(\($0))"}),
-        "cos" : Operation.UnaryOperation(cos, {"cos(\($0))"}),
-        "tan" : Operation.UnaryOperation(tan, {"tan(\($0))"}),
-        "x!" : Operation.UnaryOperation({tgamma($0+1)}, {"(\($0)!)"}),
-        "log" : Operation.UnaryOperation(log10, {"log_10(\($0))"}),
+        "π" : .Constant(M_PI),
+        "e" : .Constant(M_E),
+        "√" : .UnaryOperation(sqrt, {"√(\($0))"}),
+        "sin" : .UnaryOperation(sin, {"sin(\($0))"}),
+        "cos" : .UnaryOperation(cos, {"cos(\($0))"}),
+        "tan" : .UnaryOperation(tan, {"tan(\($0))"}),
+        "x!" : .UnaryOperation({tgamma($0+1)}, {"(\($0)!)"}),
+        "log" : .UnaryOperation(log10, {"log_10(\($0))"}),
         "E" : Operation.BinaryOperation({$0*pow(10, $1)}, {"\($0) * 10 ^ \($1)"}),
         "xʸ" : Operation.BinaryOperation(pow, {"\($0) ^ \($1)"}),
         "×" : Operation.BinaryOperation(*, {"\($0) * \($1)"}),
         "÷" : Operation.BinaryOperation(/, {"\($0) ÷ \($1)"}),
         "+" : Operation.BinaryOperation(+, {"\($0) + \($1)"}),
         "−" : Operation.BinaryOperation(-, {"\($0) - \($1)"}),
-        "=" : Operation.Equals
+        "=" : .Equals
     ]
     /*
      enums is a discrete set of values
