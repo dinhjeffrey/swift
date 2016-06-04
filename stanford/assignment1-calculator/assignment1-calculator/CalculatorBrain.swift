@@ -16,18 +16,26 @@
 import Foundation // models are UI independent so it never imports UIKit. Nothing in here about UI, all calculations
 
 class CalculatorBrain { // no super class since CalculatorBrain is the base model
-    var accumulator = Double(0)
-    var operand = Double(0)
+    var accumulator = 0.0
+    var operand = 0.0
     var binaryOperatorSetOperandTracker = false // starts off false, setOperand->true, binaryOperator->false
     var isPartialResult = false
     var descriptionAccumulator = "0"
+    var internalProgram = [AnyObject]()
     
+    /*
+     internalProgram is AnyObject and operand is a Double. How does it work?
+     bridging in Objective C makes it work.
+    */
     func setOperand(operand: Double) {
         self.operand = operand
         accumulator = operand
         print("in setOperand operand: \(self.operand), accumulator: \(accumulator)")
         descriptionAccumulator = String(format: "%g", operand)
+        internalProgram.append(operand)
+        print("internalProgram is \(internalProgram) and just appended \(operand)")
     }
+    func setOperand(variableName: String) {}
     /*
      π is `option + p`
      factored out func performOperation into operations dictionary because a lot of the code will be duplicated code
@@ -57,6 +65,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
         "−" : Operation.BinaryOperation(-, {"\($0) - \($1)"}),
         "=" : .Equals
     ]
+    var variableValues: [String: Double] = [:]
     /*
      enums is a discrete set of values
      enums like classes can have methods. enums cannot have vars or inheritance.
@@ -86,6 +95,8 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      We salt it away in another data structure called Struct
      */
     func performOperation(symbol: String) {
+        internalProgram.append(symbol)
+        print("internalProgram is \(internalProgram) and just appended \(symbol)")
         print("searching operations dictionary")
         if let operation = operations[symbol] {
             print("operation symbol is \(operation)")
@@ -162,6 +173,40 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
         private var descriptionOperand: String
     }
     /*
+     Why make PropertyList?
+     Because it tells that var program is of type AnyObject and is a PropertyList (documenting)
+     You're return internal data structure to a public caller?
+     But you're returning internalProgram which is an array. It is a copy, not the actual
+     */
+    typealias PropertyList = AnyObject
+    var program: PropertyList {
+        get {
+            print("in program.get. return internalProgram which is \(internalProgram)")
+            return internalProgram
+        }
+        set {
+            print("in program.set. clear() now")
+            clear()
+            if let arrayOfOps = newValue as? [AnyObject] {
+                for op in arrayOfOps {
+                    if let localOperand = op as? Double {
+                        print("in program.set op (\(op)) as? Double. setting operand setOperand(\(localOperand))")
+                        setOperand(localOperand)
+                    } else if let localOperation = op as? String {
+                        print("in program.set op (\(op)) as? String. performing Operation performOperation(\(localOperation))")
+                        performOperation(localOperation)
+                    }
+                }
+            }
+        }
+    }
+    func clear() {
+        accumulator = 0.0
+        pending = nil
+        internalProgram.removeAll()
+        print("in clear(). wiped array internalProgram which is \(internalProgram)")
+    }
+    /*
      read only property since there is no set
      doesn't make sense for anyone to set the result
      */
@@ -171,6 +216,10 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
     }
     private var description: String { // don't need get if that is the only property
         print("in description get")
-        return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "") ?? descriptionAccumulator
+        if pending == nil {
+            return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "")
+        } else {
+            return descriptionAccumulator
+        }
     }
 }

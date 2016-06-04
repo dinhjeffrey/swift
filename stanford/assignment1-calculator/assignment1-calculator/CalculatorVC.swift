@@ -73,22 +73,22 @@ class CalculatorVC: UIViewController {
         brain.binaryOperatorSetOperandTracker = true
         print("set binaryOperatorSetOperandTracker = true")
     }
-    @IBAction private func period(sender: UIButton) {
+    @IBAction private func period() {
         print("in func period")
         if !displayValue.characters.contains(".") {
-            displayValue += sender.currentTitle!
+            displayValue += "."
             print("sending to sequencePeriod('.')")
             sequencePeriod(".")
         }
     }
-    @IBAction private func tappedRandomFrom0to1(sender: UIButton) {
+    @IBAction private func tappedRandomFrom0to1() {
         print("in tappedRandomFrom0to1")
         let random0to1 = drand48()
         displayValue = String(random0to1)
         print("sending to sequenceRandom0to1(\(random0to1))")
         sequenceRandom0to1(String(random0to1))
     }
-    @IBAction private func allClear(sender: UIButton) {
+    @IBAction private func allClear() {
         print("in func allClear")
         displayValue = "0"
         brain.accumulator = 0
@@ -101,7 +101,7 @@ class CalculatorVC: UIViewController {
         print("sending to sequenceAllClear()")
         sequenceAllClear()
     }
-    @IBAction private func clearEntry(sender: UIButton) {
+    @IBAction private func clearEntry() {
         let clearByOne = displayValue.endIndex.advancedBy(-1)
         displayValue = displayValue.substringToIndex(clearByOne)
         if displayValue.characters.count == 0 {
@@ -109,12 +109,33 @@ class CalculatorVC: UIViewController {
         }
         print("in func clearEntry")
     }
-    @IBAction private func tappedAnsButton(sender: UIButton) {
+    @IBAction private func tappedAnsButton() {
         displayValue = String(lastAnswer)
         print("in tappedAnsButton")
         print("sending to sequenceAnswer()")
         sequenceAnswer()
     }
+    
+    
+    private var savedProgram: CalculatorBrain.PropertyList?
+    @IBAction func save() {
+        savedProgram = brain.program
+        print("stored brain.program which is \(brain.program) to savedProgram")
+    }
+    @IBAction func restore() {
+        if savedProgram != nil {
+            brain.program = savedProgram!
+            displayValue = String(brain.result)
+        } else {
+            displayValue = "0"
+        }
+        if let binaryOperatorToUnhighlight = binaryOperatorToUnhighlight {
+            unhighlight(binaryOperatorToUnhighlight)
+        }
+        sequenceValue = brain.descriptionAccumulator + " ="
+    }
+    
+    
     @IBAction private func tappedOperation(sender: UIButton) {
         print("in func tappedOperation")
         userIsInTheMiddleOfTyping = false
