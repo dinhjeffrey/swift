@@ -28,9 +28,9 @@ class CalculatorVC: UIViewController {
     private var userIsInTheMiddleOfTyping = false
     private var userPressedBinaryOperator = false
     private lazy var brain = CalculatorBrain()
-    private var binaryOperatorsInArray = ["−", "+", "÷", "×", "E", "xʸ"]
-    private var unaryOperatorsInArray = ["√", "sin", "cos", "tan", "x!", "log"]
-    private var constantsInArray = ["π", "e"]
+    private let binaryOperatorsInArray = ["−", "+", "÷", "×", "E", "xʸ"]
+    private let unaryOperatorsInArray = ["√", "sin", "cos", "tan", "x!", "log"]
+    private let constantsInArray = ["π", "e"]
     private var binaryOperatorToUnhighlight = UIButton?()
     private var lastAnswer = Double(0)
     private var currentDigit = String?()

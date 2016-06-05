@@ -48,7 +48,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
      make this look a lot better with type inference
      $0, $1, $2 .. are default arguments
      */
-    private var operations: [String: Operation] = [
+    private let operations: [String: Operation] = [
         "π" : .Constant(M_PI),
         "e" : .Constant(M_E),
         "√" : .UnaryOperation(sqrt, {"√(\($0))"}),
