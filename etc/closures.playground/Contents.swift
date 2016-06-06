@@ -11,7 +11,7 @@ import Foundation
 
 func makeIncrementer(forIncrement amount: Int) -> () -> Int {
     var runningTotal = 0
-    func incrementer() -> Int {
+    func incrementer() -> Int { // CANNOT access nested function at all on the outside
         runningTotal += amount
         return runningTotal
     }
@@ -45,6 +45,14 @@ func serveCustomer2(@autoclosure customerProvider: () -> String) {
 
 serveCustomer2(  customersInLine.removeAtIndex(0)  )
 
+
+let randomNums = [123, 22, 44444, 332, 5135, 66, 4, 2]
+
+let filterNums = randomNums.filter() { $0 > 300 }
+
+filterNums
+
+print("\u{2764}")
 /*
 The @autoclosure attribute implies the @noescape attribute, which is described above in Nonescaping Closures. If you want an autoclosure that is allowed to escape, use the @autoclosure(escaping) form of the attribute.
  */
