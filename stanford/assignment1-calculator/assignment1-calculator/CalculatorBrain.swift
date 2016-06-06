@@ -200,7 +200,7 @@ class CalculatorBrain { // no super class since CalculatorBrain is the base mode
             }
         }
     }
-    func clear() {
+    private func clear() {
         accumulator = 0.0
         pending = nil
         internalProgram.removeAll()

@@ -118,11 +118,11 @@ class CalculatorVC: UIViewController {
     
     
     private var savedProgram: CalculatorBrain.PropertyList?
-    @IBAction func save() {
+    @IBAction private func save() {
         savedProgram = brain.program
         print("stored brain.program which is \(brain.program) to savedProgram")
     }
-    @IBAction func restore() {
+    @IBAction private func restore() {
         if savedProgram != nil {
             brain.program = savedProgram!
             displayValue = String(brain.result)
