@@ -7,7 +7,7 @@ import Foundation
 
 // ASSOCIATED VALUES
 /*
- allow you to attach data to isntances of an enum and different
+ allow you to attach data to instances of an enum and different
  cases can hv different types of associated values
  */
 enum ShapeDimension {
@@ -74,7 +74,7 @@ enum PlanetOrder: Int {
 
 let earth = PlanetOrder.Earth.rawValue
 
-// when the type is explicit, Swift defaults to using the case  name as the raw value
+// when the type is explicit, Swift defaults to using the case name as the raw value
 
 enum CompassNew: String {
     case North, South, East, West
@@ -99,3 +99,82 @@ if let somePlanet = PlanetOrder(rawValue: planetPositionToFind) {
 } else {
     print("There is not a planet at position \(planetPositionToFind)")
 }
+
+
+// RECURSIVE ENUMERATIONS
+
+// enums that take a math expression
+
+indirect enum MathExpression {
+    case Number(Int)
+    case Add(MathExpression, MathExpression)
+    case Subtract(MathExpression, MathExpression)
+    case Multiply(MathExpression, MathExpression)
+    case Divide(MathExpression, MathExpression)
+}
+func evaluate(expression: MathExpression) -> Int {
+    switch expression {
+    case .Number(let value):
+        return value
+    case .Add(let left, let right):
+        return evaluate(left) + evaluate(right)
+    case .Subtract(let left, let right):
+        return evaluate(left) - evaluate(right)
+    case . Multiply(let left, let right):
+        return evaluate(left) * evaluate(right)
+    case .Divide(let left, let right):
+        return evaluate(left) / evaluate(right)
+    }
+}
+
+// evalute (25 * 5) - 20
+let twentyFive = MathExpression.Number(25)
+let five = MathExpression.Number(5)
+let multiply = MathExpression.Multiply(twentyFive, five)
+let subtract = MathExpression.Subtract(multiply, MathExpression.Number(20))
+print(subtract)
+
+// EXAMPLE --> rock, paper, scissors, lizard, spock
+
+// Define enum for result & hand options
+
+enum HandGesture {
+    case Rock, Paper, Scissors, Lizard, Spock
+}
+enum Result: String {
+    case Win, Lose, Draw
+}
+
+// Define function on match
+
+func matches(firstPlayer a: HandGesture, secondPlayer b: HandGesture) -> Result {
+    // if sttmt -> compare hand gestures
+    if   a == .Spock && (b == .Scissors || b == .Rock) ||
+        (a ==  .Rock && (b == .Lizard || b == .Scissors)) ||
+        (a ==  .Paper && (b == .Spock || b == .Rock)) ||
+        (a ==  .Scissors && (b == .Lizard || b == .Paper)) ||
+        (a ==  .Lizard && (b == .Spock || b == .Paper)) {
+        return .Win
+    } else if a == b {
+        return .Draw
+    } else {
+        return .Lose
+    }
+}
+
+matches(firstPlayer: .Rock, secondPlayer: .Scissors)
+
+matches(firstPlayer: .Spock, secondPlayer: .Spock)
+
+matches(firstPlayer: .Paper, secondPlayer: .Scissors)
+
+
+
+
+
+
+
+
+
+
+
