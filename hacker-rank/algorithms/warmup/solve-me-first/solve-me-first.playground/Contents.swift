@@ -53,7 +53,7 @@ public func readLn() -> [Int] {
  3
  
  //Then, on the command line use something like...
- cat solve-me-first.txt | swift solve-me-first.playground/Contents.swift
+ cat input00.txt | swift solve-me-first.playground/Contents.swift
  
  */
 
