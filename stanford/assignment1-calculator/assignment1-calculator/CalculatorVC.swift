@@ -20,7 +20,7 @@
 import UIKit
 import Foundation
 
-class CalculatorVC: UIViewController {
+final class CalculatorVC: UIViewController {
     
     @IBOutlet private weak var display: UILabel!
     @IBOutlet private weak var sequenceLabel: UILabel!

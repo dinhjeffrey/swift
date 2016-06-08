@@ -15,7 +15,7 @@
  */
 import Foundation // models are UI independent so it never imports UIKit. Nothing in here about UI, all calculations
 
-class CalculatorBrain { // no super class since CalculatorBrain is the base model
+final class CalculatorBrain { // no super class since CalculatorBrain is the base model
     var accumulator = 0.0
     var operand = 0.0
     var binaryOperatorSetOperandTracker = false // starts off false, setOperand->true, binaryOperator->false

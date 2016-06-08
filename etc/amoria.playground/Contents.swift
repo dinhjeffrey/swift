@@ -7,6 +7,8 @@ import Foundation
 
 
 
-let fives = Int(String(count: 10, repeatedValue: Character("5")))
-
+var numberOfLegs = ["s": 8, "a": 6, "c": 4]
+numberOfLegs["b"] = 2
+numberOfLegs["s"] = numberOfLegs["s"]! + 3
+numberOfLegs
 
