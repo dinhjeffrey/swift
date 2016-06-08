@@ -7,22 +7,6 @@ import Foundation
 
 
 
-func makeIncrementer(forIncrement amount: Int) -> () -> Int {
-    var runningTotal = 0
-    func incrementer() -> Int {
-        runningTotal += amount
-        return runningTotal
-    }
-    return incrementer
-}
+let fives = Int(String(count: 10, repeatedValue: Character("5")))
 
-let guardian = makeIncrementer(forIncrement: 10)
-guardian()
-guardian()
-guardian()
-let angel = guardian
-guardian()
-angel()
-guardian()
-angel()
 
