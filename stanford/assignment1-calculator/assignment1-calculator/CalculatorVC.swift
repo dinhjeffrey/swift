@@ -10,7 +10,7 @@
  ******************************************************
  ******************************************************
  
-                        TODO:
+ TODO:
  * don't need arguments for some actions such as Ans button
  
  ******************************************************
@@ -115,6 +115,20 @@ final class CalculatorVC: UIViewController {
         print("sending to sequenceAnswer()")
         sequenceAnswer()
     }
+    
+    private var screenValue: String?
+    @IBAction func saveScreenValue() {
+        screenValue = displayValue
+    }
+    @IBAction func restoreScreenValue() {
+        if let screenValue = screenValue {
+            displayValue = screenValue
+        }
+    }
+    
+    
+    
+    
     
     
     private var savedProgram: CalculatorBrain.PropertyList?

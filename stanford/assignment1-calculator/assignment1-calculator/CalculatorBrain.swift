@@ -35,7 +35,9 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
         internalProgram.append(operand)
         print("internalProgram is \(internalProgram) and just appended \(operand)")
     }
-    func setOperand(variableName: String) {}
+    func setOperand(variableName: String) {
+        variableValues[variableName] = result
+    }
     /*
      π is `option + p`
      factored out func performOperation into operations dictionary because a lot of the code will be duplicated code
@@ -179,7 +181,7 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
      But you're returning internalProgram which is an array. It is a copy, not the actual
      */
     typealias PropertyList = AnyObject
-    var program: PropertyList {
+    var program: PropertyList { // PROGRAM VAR NEEDS TO BE UPDATED TO SUPPORT VARIABLES TOO
         get {
             print("in program.get. return internalProgram which is \(internalProgram)")
             return internalProgram
