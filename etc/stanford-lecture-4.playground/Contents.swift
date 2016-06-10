@@ -19,8 +19,5 @@ path.lineWidth = 3.0             // method in UIBezierPath, not UIColor
 path.fill()                      // method in UIBezierPath
 path.stroke()                    // method in UIBezierPath
 
-var num = 0
-
-for index in 0...0 {
-    num += 1
-}
+// FRAME and CENTER is for positioning in your superview
+// BOUNDS is for drawing!!
