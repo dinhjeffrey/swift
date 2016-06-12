@@ -6,9 +6,9 @@
 import Foundation
 
 
-
-var numberOfLegs = ["s": 8, "a": 6, "c": 4]
-numberOfLegs["b"] = 2
-numberOfLegs["s"] = numberOfLegs["s"]! + 3
-numberOfLegs
+var num = 0
+for i in 3...5 {
+    num += i
+    print(num)
+}
 

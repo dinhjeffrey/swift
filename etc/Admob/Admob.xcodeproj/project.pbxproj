@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00C211DD1D0DC929007DE668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C211DC1D0DC929007DE668 /* AppDelegate.swift */; };
+		00C211DF1D0DC929007DE668 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C211DE1D0DC929007DE668 /* ViewController.swift */; };
+		00C211E21D0DC929007DE668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C211E01D0DC929007DE668 /* Main.storyboard */; };
+		00C211E41D0DC929007DE668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C211E31D0DC929007DE668 /* Assets.xcassets */; };
+		00C211E71D0DC929007DE668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C211E51D0DC929007DE668 /* LaunchScreen.storyboard */; };
+		00C211F11D0DC9A8007DE668 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F01D0DC9A8007DE668 /* AdSupport.framework */; };
+		00C211F31D0DC9AE007DE668 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F21D0DC9AE007DE668 /* AudioToolbox.framework */; };
+		00C211F51D0DC9B3007DE668 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F41D0DC9B3007DE668 /* AVFoundation.framework */; };
+		00C211F91D0DC9C5007DE668 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F61D0DC9C5007DE668 /* CoreGraphics.framework */; };
+		00C211FA1D0DC9C5007DE668 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F71D0DC9C5007DE668 /* CoreMedia.framework */; };
+		00C211FB1D0DC9C5007DE668 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211F81D0DC9C5007DE668 /* CoreTelephony.framework */; };
+		00C211FE1D0DC9CF007DE668 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211FC1D0DC9CF007DE668 /* EventKit.framework */; };
+		00C211FF1D0DC9CF007DE668 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C211FD1D0DC9CF007DE668 /* EventKitUI.framework */; };
+		00C212011D0DC9D7007DE668 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C212001D0DC9D7007DE668 /* MediaPlayer.framework */; };
+		00C212031D0DC9DC007DE668 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C212021D0DC9DC007DE668 /* MessageUI.framework */; };
+		00C212051D0DC9E2007DE668 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C212041D0DC9E2007DE668 /* StoreKit.framework */; };
+		00C212071D0DC9E8007DE668 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C212061D0DC9E8007DE668 /* SystemConfiguration.framework */; };
+		00C212111D0DD1A1007DE668 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C212081D0DD1A1007DE668 /* GoogleMobileAds.framework */; };
+		00C212121D0DD1A1007DE668 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00C212101D0DD1A1007DE668 /* README.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00C211D91D0DC929007DE668 /* Admob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Admob.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C211DC1D0DC929007DE668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00C211DE1D0DC929007DE668 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		00C211E11D0DC929007DE668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		00C211E31D0DC929007DE668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00C211E61D0DC929007DE668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00C211E81D0DC929007DE668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00C211F01D0DC9A8007DE668 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		00C211F21D0DC9AE007DE668 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		00C211F41D0DC9B3007DE668 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		00C211F61D0DC9C5007DE668 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		00C211F71D0DC9C5007DE668 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		00C211F81D0DC9C5007DE668 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		00C211FC1D0DC9CF007DE668 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		00C211FD1D0DC9CF007DE668 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		00C212001D0DC9D7007DE668 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		00C212021D0DC9DC007DE668 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		00C212041D0DC9E2007DE668 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		00C212061D0DC9E8007DE668 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		00C212081D0DD1A1007DE668 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		00C2120A1D0DD1A1007DE668 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		00C2120B1D0DD1A1007DE668 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		00C2120C1D0DD1A1007DE668 /* GADMediationAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdRequest.h; sourceTree = "<group>"; };
+		00C2120D1D0DD1A1007DE668 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
+		00C2120E1D0DD1A1007DE668 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		00C2120F1D0DD1A1007DE668 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		00C212101D0DD1A1007DE668 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00C211D61D0DC929007DE668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C212071D0DC9E8007DE668 /* SystemConfiguration.framework in Frameworks */,
+				00C212051D0DC9E2007DE668 /* StoreKit.framework in Frameworks */,
+				00C212111D0DD1A1007DE668 /* GoogleMobileAds.framework in Frameworks */,
+				00C212031D0DC9DC007DE668 /* MessageUI.framework in Frameworks */,
+				00C212011D0DC9D7007DE668 /* MediaPlayer.framework in Frameworks */,
+				00C211FE1D0DC9CF007DE668 /* EventKit.framework in Frameworks */,
+				00C211FF1D0DC9CF007DE668 /* EventKitUI.framework in Frameworks */,
+				00C211F91D0DC9C5007DE668 /* CoreGraphics.framework in Frameworks */,
+				00C211FA1D0DC9C5007DE668 /* CoreMedia.framework in Frameworks */,
+				00C211FB1D0DC9C5007DE668 /* CoreTelephony.framework in Frameworks */,
+				00C211F51D0DC9B3007DE668 /* AVFoundation.framework in Frameworks */,
+				00C211F31D0DC9AE007DE668 /* AudioToolbox.framework in Frameworks */,
+				00C211F11D0DC9A8007DE668 /* AdSupport.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00C211D01D0DC929007DE668 = {
+			isa = PBXGroup;
+			children = (
+				00C211DB1D0DC929007DE668 /* Admob */,
+				00C211DA1D0DC929007DE668 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00C211DA1D0DC929007DE668 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00C211D91D0DC929007DE668 /* Admob.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00C211DB1D0DC929007DE668 /* Admob */ = {
+			isa = PBXGroup;
+			children = (
+				00C211EF1D0DC980007DE668 /* Admob Files */,
+				00C211EE1D0DC937007DE668 /* Supporting Files */,
+				00C211DE1D0DC929007DE668 /* ViewController.swift */,
+				00C211E01D0DC929007DE668 /* Main.storyboard */,
+			);
+			path = Admob;
+			sourceTree = "<group>";
+		};
+		00C211EE1D0DC937007DE668 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00C211DC1D0DC929007DE668 /* AppDelegate.swift */,
+				00C211E31D0DC929007DE668 /* Assets.xcassets */,
+				00C211E51D0DC929007DE668 /* LaunchScreen.storyboard */,
+				00C211E81D0DC929007DE668 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00C211EF1D0DC980007DE668 /* Admob Files */ = {
+			isa = PBXGroup;
+			children = (
+				00C212081D0DD1A1007DE668 /* GoogleMobileAds.framework */,
+				00C212091D0DD1A1007DE668 /* Mediation Adapters */,
+				00C212061D0DC9E8007DE668 /* SystemConfiguration.framework */,
+				00C212041D0DC9E2007DE668 /* StoreKit.framework */,
+				00C212021D0DC9DC007DE668 /* MessageUI.framework */,
+				00C212001D0DC9D7007DE668 /* MediaPlayer.framework */,
+				00C211FC1D0DC9CF007DE668 /* EventKit.framework */,
+				00C211FD1D0DC9CF007DE668 /* EventKitUI.framework */,
+				00C211F61D0DC9C5007DE668 /* CoreGraphics.framework */,
+				00C211F71D0DC9C5007DE668 /* CoreMedia.framework */,
+				00C211F81D0DC9C5007DE668 /* CoreTelephony.framework */,
+				00C211F41D0DC9B3007DE668 /* AVFoundation.framework */,
+				00C211F21D0DC9AE007DE668 /* AudioToolbox.framework */,
+				00C211F01D0DC9A8007DE668 /* AdSupport.framework */,
+			);
+			name = "Admob Files";
+			sourceTree = "<group>";
+		};
+		00C212091D0DD1A1007DE668 /* Mediation Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				00C2120A1D0DD1A1007DE668 /* GADMAdNetworkAdapterProtocol.h */,
+				00C2120B1D0DD1A1007DE668 /* GADMAdNetworkConnectorProtocol.h */,
+				00C2120C1D0DD1A1007DE668 /* GADMediationAdRequest.h */,
+				00C2120D1D0DD1A1007DE668 /* GADMEnums.h */,
+				00C2120E1D0DD1A1007DE668 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
+				00C2120F1D0DD1A1007DE668 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
+				00C212101D0DD1A1007DE668 /* README.txt */,
+			);
+			path = "Mediation Adapters";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00C211D81D0DC929007DE668 /* Admob */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00C211EB1D0DC929007DE668 /* Build configuration list for PBXNativeTarget "Admob" */;
+			buildPhases = (
+				00C211D51D0DC929007DE668 /* Sources */,
+				00C211D61D0DC929007DE668 /* Frameworks */,
+				00C211D71D0DC929007DE668 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Admob;
+			productName = Admob;
+			productReference = 00C211D91D0DC929007DE668 /* Admob.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00C211D11D0DC929007DE668 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "jeffrey dinh";
+				TargetAttributes = {
+					00C211D81D0DC929007DE668 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5JELCQ2NQZ;
+					};
+				};
+			};
+			buildConfigurationList = 00C211D41D0DC929007DE668 /* Build configuration list for PBXProject "Admob" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00C211D01D0DC929007DE668;
+			productRefGroup = 00C211DA1D0DC929007DE668 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00C211D81D0DC929007DE668 /* Admob */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00C211D71D0DC929007DE668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C211E71D0DC929007DE668 /* LaunchScreen.storyboard in Resources */,
+				00C211E41D0DC929007DE668 /* Assets.xcassets in Resources */,
+				00C212121D0DD1A1007DE668 /* README.txt in Resources */,
+				00C211E21D0DC929007DE668 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00C211D51D0DC929007DE668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C211DF1D0DC929007DE668 /* ViewController.swift in Sources */,
+				00C211DD1D0DC929007DE668 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		00C211E01D0DC929007DE668 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00C211E11D0DC929007DE668 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		00C211E51D0DC929007DE668 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00C211E61D0DC929007DE668 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00C211E91D0DC929007DE668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00C211EA1D0DC929007DE668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		00C211EC1D0DC929007DE668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Admob",
+				);
+				INFOPLIST_FILE = Admob/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dindledoo.Admob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		00C211ED1D0DC929007DE668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Admob",
+				);
+				INFOPLIST_FILE = Admob/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dindledoo.Admob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00C211D41D0DC929007DE668 /* Build configuration list for PBXProject "Admob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00C211E91D0DC929007DE668 /* Debug */,
+				00C211EA1D0DC929007DE668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00C211EB1D0DC929007DE668 /* Build configuration list for PBXNativeTarget "Admob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00C211EC1D0DC929007DE668 /* Debug */,
+				00C211ED1D0DC929007DE668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00C211D11D0DC929007DE668 /* Project object */;
+}

@@ -24,21 +24,26 @@ class ContactVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     @IBAction func send(sender: UIButton) {
-        let toRecipients = ["dinhjeffreyy@gmail.com"]
-        
-        let mc: MFMailComposeViewController = MFMailComposeViewController()
-        
-        mc.mailComposeDelegate = self
-        mc.setToRecipients(toRecipients)
-        mc.setSubject(nameField.text!)
-        mc.setMessageBody("Name: \(nameField.text!) \n\nEmail: \(emailField.text!) \n\nMessage: \(messageField.text!)", isHTML: false)
-        
-        
-        
-        self.presentViewController(mc, animated: true, completion: nil)
+        if MFMailComposeViewController.canSendMail() {
+            let toRecipients = ["jjames@pacbell.net"]
+            
+            let mc = MFMailComposeViewController()
+            
+            mc.mailComposeDelegate = self
+            mc.setToRecipients(toRecipients)
+            mc.setSubject(nameField.text!)
+            mc.setMessageBody("Name: \(nameField.text!) \n\nEmail: \(emailField.text!) \n\nMessage: \(messageField.text!)", isHTML: false)
+            print("can send mail")
+            
+            
+            self.presentViewController(mc, animated: true, completion: nil)
+        } else {
+            print("failed to send")
+        }
     }
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        print("error is \(error) and result sent is \(MFMailComposeResultSent.rawValue))")
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue:
             print("Cancelled")
