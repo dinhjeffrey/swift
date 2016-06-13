@@ -26,7 +26,7 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
     /*
      internalProgram is AnyObject and operand is a Double. How does it work?
      bridging in Objective C makes it work.
-    */
+     */
     func setOperand(operand: Double) {
         self.operand = operand
         accumulator = operand
@@ -189,17 +189,18 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
         set {
             print("in program.set. clear() now")
             clear()
-            if let arrayOfOps = newValue as? [AnyObject] {
-                for op in arrayOfOps {
-                    if let localOperand = op as? Double {
-                        print("in program.set op (\(op)) as? Double. setting operand setOperand(\(localOperand))")
-                        setOperand(localOperand)
-                    } else if let localOperation = op as? String {
-                        print("in program.set op (\(op)) as? String. performing Operation performOperation(\(localOperation))")
-                        performOperation(localOperation)
-                    }
+            guard ((newValue as? [AnyObject]) != nil) else { return }
+            let arrayOfOps = newValue as! [AnyObject]
+            for op in arrayOfOps {
+                if let localOperand = op as? Double {
+                    print("in program.set op (\(op)) as? Double. setting operand setOperand(\(localOperand))")
+                    setOperand(localOperand)
+                } else if let localOperation = op as? String {
+                    print("in program.set op (\(op)) as? String. performing Operation performOperation(\(localOperation))")
+                    performOperation(localOperation)
                 }
             }
+            
         }
     }
     private func clear() {
