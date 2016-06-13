@@ -443,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1140" y="1236"/>
+            <point key="canvasLocation" x="771" y="1386"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="32g-P5-XH9">
@@ -478,6 +478,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RM9-ow-nta"/>
+        <segue reference="xbW-ru-Ps3"/>
     </inferredMetricsTieBreakers>
 </document>
