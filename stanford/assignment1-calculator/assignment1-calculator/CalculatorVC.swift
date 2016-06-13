@@ -155,25 +155,25 @@ final class CalculatorVC: UIViewController {
         userIsInTheMiddleOfTyping = false
         print("sending displayValue to brain.setOperand")
         brain.setOperand(Double(displayValue)!)
-        if let mathematicalSymbol = sender.currentTitle {
-            // highlight
-            if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) &&
-                (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)) {
-                print("initializing unhighlight()")
-                unhighlight(binaryOperatorToUnhighlight!)
-            }
-            if binaryOperatorsInArray.contains(mathematicalSymbol) {
-                print("initializing highlight() and setting binaryOperatorToUnhighlight to UIButton sender: \(sender.currentTitle)")
-                highlight(sender)
-                binaryOperatorToUnhighlight = sender
-            }
-            // end:highlight
-            print("in mathematicalSymbol. mathematicalSymbol is \(mathematicalSymbol). userPressedBinaryOperator is \(userPressedBinaryOperator) and sending mathematicalSymbol to brain.performOperation")
-            brain.performOperation(mathematicalSymbol)
-            print("brain.isPartialResult is \(brain.isPartialResult)")
-            print("sending to sequencePressedAnOperator(\(mathematicalSymbol))")
-            sequencePressedAnOperator(mathematicalSymbol)
+        guard sender.currentTitle != nil else { return }
+        let mathematicalSymbol = sender.currentTitle!
+        // highlight
+        if (binaryOperatorToUnhighlight != nil && !unaryOperatorsInArray.contains(mathematicalSymbol)) &&
+            (binaryOperatorToUnhighlight != nil && !constantsInArray.contains(mathematicalSymbol)) {
+            print("initializing unhighlight()")
+            unhighlight(binaryOperatorToUnhighlight!)
         }
+        if binaryOperatorsInArray.contains(mathematicalSymbol) {
+            print("initializing highlight() and setting binaryOperatorToUnhighlight to UIButton sender: \(sender.currentTitle)")
+            highlight(sender)
+            binaryOperatorToUnhighlight = sender
+        }
+        // end:highlight
+        print("in mathematicalSymbol. mathematicalSymbol is \(mathematicalSymbol). userPressedBinaryOperator is \(userPressedBinaryOperator) and sending mathematicalSymbol to brain.performOperation")
+        brain.performOperation(mathematicalSymbol)
+        print("brain.isPartialResult is \(brain.isPartialResult)")
+        print("sending to sequencePressedAnOperator(\(mathematicalSymbol))")
+        sequencePressedAnOperator(mathematicalSymbol)
         print("sending brain.result to displayValue")
         displayValue = String(brain.result)
         lastAnswer = brain.result
