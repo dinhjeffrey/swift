@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bdg-LJ-4uQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Graphic-->
+        <scene sceneID="K6k-Bs-m5K">
+            <objects>
+                <viewController id="fqz-H7-Mp0" customClass="GraphicVC" customModule="assignment1_calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Ky-ok-XUb"/>
+                        <viewControllerLayoutGuide type="bottom" id="bfN-lJ-OWZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I01-Jt-GHe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IO-Po-gGZ">
+                                <rect key="frame" x="244" y="111" width="112" height="30"/>
+                                <state key="normal" title="Show Calculator"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="RM9-ow-nta"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0IO-Po-gGZ" firstAttribute="top" secondItem="5Ky-ok-XUb" secondAttribute="bottom" constant="47" id="1R2-gj-DwW"/>
+                            <constraint firstItem="0IO-Po-gGZ" firstAttribute="centerX" secondItem="I01-Jt-GHe" secondAttribute="centerX" id="NPk-VN-21F"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Graphic" id="hFv-8T-5Gk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PfX-SQ-CHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="551"/>
+        </scene>
         <!--CalculatorVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -411,7 +443,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="380" y="348"/>
+            <point key="canvasLocation" x="1140" y="1236"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="32g-P5-XH9">
+            <objects>
+                <splitViewController id="bdg-LJ-4uQ" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="d4T-Vr-pAQ" kind="relationship" relationship="masterViewController" id="vgb-UR-vXo"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="xbW-ru-Ps3"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Leg-5N-OdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-145" y="995"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zrO-CR-z0d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d4T-Vr-pAQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M9X-RA-mYv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fqz-H7-Mp0" kind="relationship" relationship="rootViewController" id="Gzm-k6-A37"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ybd-df-Nt6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="551"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RM9-ow-nta"/>
+    </inferredMetricsTieBreakers>
 </document>
