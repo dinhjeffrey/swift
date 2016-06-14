@@ -56,8 +56,6 @@ final class CalculatorVC: UIViewController {
     
     @IBAction private func tappedButton(sender: UIButton) {
         let digit = sender.currentTitle!
-        print("sending to sequencePressedADigit(\(digit))")
-        sequencePressedADigit(digit)
         print("in tappedButton \(digit)")
         currentDigit = digit
         if userIsInTheMiddleOfTyping { // [CLEAN] if statements
@@ -75,16 +73,12 @@ final class CalculatorVC: UIViewController {
         print("in func period")
         if !displayValue.characters.contains(".") {
             displayValue += "."
-            print("sending to sequencePeriod('.')")
-            sequencePeriod(".")
         }
     }
     @IBAction private func tappedRandomFrom0to1() {
         print("in tappedRandomFrom0to1")
         let random0to1 = drand48()
         displayValue = String(random0to1)
-        print("sending to sequenceRandom0to1(\(random0to1))")
-        sequenceRandom0to1(String(random0to1))
     }
     @IBAction private func allClear() {
         print("in func allClear")
@@ -110,8 +104,6 @@ final class CalculatorVC: UIViewController {
     @IBAction private func tappedAnsButton() {
         displayValue = String(lastAnswer)
         print("in tappedAnsButton")
-        print("sending to sequenceAnswer()")
-        sequenceAnswer()
     }
     
     private var screenValue: String?
@@ -191,28 +183,9 @@ private extension CalculatorVC {
             sequenceLabel.text = newValue
         }
     }
-    func sequencePeriod(period: String) {
-        print("in sequencePeriod")
-        sequenceValue += period
-    }
-    func sequenceRandom0to1(randomNumber: String) {
-        print("in sequenceRandom0to1")
-        sequenceValue += randomNumber
-    }
     func sequenceAllClear() {
         print("in sequenceAllClear")
         sequenceValue = " "
-    }
-    func sequenceClearEntry() {}
-    func sequenceAnswer() {
-        print("in sequenceAnswer")
-        sequenceValue += String(lastAnswer)
-    }
-    func sequencePressedADigit(digit: String) {
-        print("in sequencePressedADigit")
-        if !brain.isPartialResult {
-            sequenceValue += digit
-        }
     }
     func sequencePressedAnOperator(mathematicalSymbol: String) {
         print("in sequencePressedAnOperator")
