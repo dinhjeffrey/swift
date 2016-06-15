@@ -30,10 +30,10 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
     func setOperand(operand: Double) {
         self.operand = operand
         accumulator = operand
-        print("in setOperand operand: \(self.operand), accumulator: \(accumulator)")
+        //print("in setOperand operand: \(self.operand), accumulator: \(accumulator)")
         descriptionAccumulator = String(format: "%g", operand)
         internalProgram.append(operand)
-        print("internalProgram is \(internalProgram) and just appended \(operand)")
+        //print("internalProgram is \(internalProgram) and just appended \(operand)")
     }
     func setOperand(variableName: String) {
         variableValues[variableName] = result
@@ -98,43 +98,43 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
      */
     func performOperation(symbol: String) {
         internalProgram.append(symbol)
-        print("internalProgram is \(internalProgram) and just appended \(symbol)")
-        print("searching operations dictionary")
+        //print("internalProgram is \(internalProgram) and just appended \(symbol)")
+        //print("searching operations dictionary")
         if let operation = operations[symbol] {
-            print("operation symbol is \(operation)")
+            //print("operation symbol is \(operation)")
             switch operation {
                 
             case let .Constant(value):
                 accumulator = value
                 descriptionAccumulator = symbol
-                print("in case .Constant")
+                //print("in case .Constant")
                 
             case let .UnaryOperation(function, descriptionFunction):
                 accumulator = function(accumulator)
                 descriptionAccumulator = descriptionFunction(descriptionAccumulator)
-                print("in case .UnaryOperation")
+                //print("in case .UnaryOperation")
                 
             case let .BinaryOperation(function, descriptionFunction):
-                print("in case .BinaryOperation")
+                //print("in case .BinaryOperation")
                 if binaryOperatorSetOperandTracker == true && pending != nil { /* clicking a digit sets binaryOperatorSetOperandTracker = true and clicking a binaryOperator sets it to = false */
-                    print("in binarOperatorSetOperandTracker and intializing executePendingBinaryOperation and set new pending")
+                    //print("in binarOperatorSetOperandTracker and intializing executePendingBinaryOperation and set new pending")
                     isPartialResult = true
                     executePendingBinaryOperation()
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
                 } else if pending != nil { /* goes here on second binary operation click */
-                    print("in case .BinaryOperation != nil && isPartialResult")
+                    //print("in case .BinaryOperation != nil && isPartialResult")
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
                 } else { /* goes here on first binary operation click */
-                    print("in case .BinaryOperation else and pending is \(pending)")
+                    //print("in case .BinaryOperation else and pending is \(pending)")
                     isPartialResult = true
                     pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator, descriptionFunction: descriptionFunction, descriptionOperand: descriptionAccumulator)
                 }
                 binaryOperatorSetOperandTracker = false
-                print("set binaryOperatorSetOperandTracker = false")
+                //print("set binaryOperatorSetOperandTracker = false")
                 
             case .Equals:
                 executePendingBinaryOperation()
-                print("in case .Equals")
+                //print("in case .Equals")
                 
             }
         }
@@ -149,9 +149,9 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
             descriptionAccumulator = pending!.descriptionFunction(pending!.descriptionOperand, descriptionAccumulator)
             pending = nil
             isPartialResult = false
-            print("in executePendingBinaryOperation. accumulator = \(accumulator) and descriptionAccumulator = \(descriptionAccumulator)")
+            //print("in executePendingBinaryOperation. accumulator = \(accumulator) and descriptionAccumulator = \(descriptionAccumulator)")
         } else {
-            print("in executePendingBinaryOperation else. pending is nil")
+            //print("in executePendingBinaryOperation else. pending is nil")
         }
     }
     /*
@@ -187,23 +187,23 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
             return internalProgram
         }
         set {
-            print("in program.set. clear() now")
+            //print("in program.set. clear() now")
             clear()
             guard ((newValue as? [AnyObject]) != nil) else { return }
             let arrayOfOps = newValue as! [AnyObject]
             for op in arrayOfOps {
                 if let localOperand = op as? Double {
-                    print("in program.set op (\(op)) as? Double. setting operand setOperand(\(localOperand))")
+                    //print("in program.set op (\(op)) as? Double. setting operand setOperand(\(localOperand))")
                     setOperand(localOperand)
                 } else if let localOperation = op as? String {
-                    print("in program.set op (\(op)) as? String. performing Operation performOperation(\(localOperation))")
+                    //print("in program.set op (\(op)) as? String. performing Operation performOperation(\(localOperation))")
                     performOperation(localOperation)
                 }
             }
             
         }
     }
-    private func clear() {
+    func clear() {
         accumulator = 0.0
         pending = nil
         internalProgram.removeAll()
@@ -214,11 +214,11 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
      doesn't make sense for anyone to set the result
      */
     var result: Double { // don't need get if that is the only property
-        print("in result get")
+        //print("in result get")
         return accumulator
     }
     private var description: String { // don't need get if that is the only property
-        print("in description get")
+        //print("in description get")
         if pending == nil {
             return pending!.descriptionFunction(pending!.descriptionOperand, pending!.descriptionOperand != descriptionAccumulator ? descriptionAccumulator : "")
         } else {
