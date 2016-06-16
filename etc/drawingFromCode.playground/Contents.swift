@@ -12,3 +12,14 @@ label.backgroundColor = UIColor.blueColor()
 label.text = "Hello"
 view.addSubview(label)
 
+print(label.text)
+
+let path = UIBezierPath()
+path.moveToPoint(CGPoint(x: 80, y: 50))
+path.addLineToPoint(CGPoint(x: 140, y: 150))
+path.addLineToPoint(CGPoint(x: 10, y: 150))
+path.closePath()
+UIColor.greenColor().setFill()
+path.fill()
+
+

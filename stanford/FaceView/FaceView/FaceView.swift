@@ -12,7 +12,7 @@ import UIKit
 class FaceView: UIView {
     // stored property
     @IBInspectable var scale: CGFloat = 0.90 { didSet {
-        print("in scal e")
+        print("in scale")
         setNeedsDisplay() } } // explicitly type Type to use IBInspectable
     @IBInspectable var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } } // 1 full smile, -1 full frown
     @IBInspectable var eyesOpen: Bool = false  { didSet {
