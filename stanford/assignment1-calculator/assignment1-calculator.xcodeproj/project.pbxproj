@@ -62,11 +62,11 @@
 		00C97E9D1CF74CE000844EA5 /* assignment1-calculator */ = {
 			isa = PBXGroup;
 			children = (
-				005833191D0F846500F6629A /* GraphVC.swift */,
 				00C97EA01CF74CE000844EA5 /* CalculatorVC.swift */,
 				00C97EB11CF7716C00844EA5 /* CalculatorBrain.swift */,
-				00D8B91D1D11D72A00141579 /* GraphingView.swift */,
 				00C97EA21CF74CE000844EA5 /* Main.storyboard */,
+				005833191D0F846500F6629A /* GraphVC.swift */,
+				00D8B91D1D11D72A00141579 /* GraphingView.swift */,
 				003F9EAC1D0FD7E800C028AD /* AxesDrawer.swift */,
 				00C97EB01CF7711100844EA5 /* Supporting Files */,
 			);

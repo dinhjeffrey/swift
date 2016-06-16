@@ -423,6 +423,9 @@
                     <navigationItem key="navigationItem" title="Graph" id="0wE-8e-dvi">
                         <barButtonItem key="rightBarButtonItem" title="Stats" id="COD-X5-hpQ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="graphingView" destination="ACs-Np-c4r" id="8AF-Di-Ao5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cs-cs-Qmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,7 @@ import UIKit
 class GraphVC: UIViewController {
 
 
+    @IBOutlet weak var graphingView: GraphingView!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }

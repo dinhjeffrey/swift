@@ -1,4 +1,4 @@
-//
+///
 //  FaceView.swift
 //  FaceView
 //
@@ -8,11 +8,19 @@
 
 import UIKit
 
+@IBDesignable
 class FaceView: UIView {
-    var scale: CGFloat = 0.90
-    var mouthCurvature: Double = 1.0 // 1 full smile, -1 full frown
-    var eyesOpen: Bool = true
-    var eyeBrowTilt: Double = 0.0 // -1 full furrow, 1 fully relaxed
+    // stored property
+    @IBInspectable var scale: CGFloat = 0.90 { didSet {
+        print("in scal e")
+        setNeedsDisplay() } } // explicitly type Type to use IBInspectable
+    @IBInspectable var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } } // 1 full smile, -1 full frown
+    @IBInspectable var eyesOpen: Bool = false  { didSet {
+        print("initializing setNeedsDisplay. meaning layer contents needs to be updated")
+        setNeedsDisplay() } }
+    @IBInspectable var eyeBrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } } // -1 full furrow, 1 fully relaxed
+    @IBInspectable var color: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    @IBInspectable var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay() } }
     
     //computed property
     private var skullRadius: CGFloat {
@@ -42,7 +50,7 @@ class FaceView: UIView {
             endAngle: CGFloat(2*M_PI),
             clockwise: false
         )
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         return path
     }
     private func getEyeCenter(eye: Eye) -> CGPoint {
@@ -64,7 +72,7 @@ class FaceView: UIView {
             let path = UIBezierPath()
             path.moveToPoint(CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
             path.addLineToPoint(CGPoint(x:eyeCenter.x + eyeRadius, y: eyeCenter.y))
-            path.lineWidth = 5.0
+            path.lineWidth = lineWidth
             return path
         }
     }
@@ -84,7 +92,7 @@ class FaceView: UIView {
         let path = UIBezierPath()
         path.moveToPoint(start)
         path.addCurveToPoint(end, controlPoint1: cp1, controlPoint2: cp2)
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         return path
     }
     
@@ -105,7 +113,7 @@ class FaceView: UIView {
         let path = UIBezierPath()
         path.moveToPoint(browStart)
         path.addLineToPoint(browEnd)
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         return path
     }
     

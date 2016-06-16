@@ -8,14 +8,20 @@
 
 import UIKit
 
+@IBDesignable
 class GraphingView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    @IBInspectable var axesColor: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    
+    
+    
+    
+    
+   
     override func drawRect(rect: CGRect) {
-        // Drawing code
+        let axes = AxesDrawer(color: axesColor, contentScaleFactor: contentScaleFactor)
+        axes.drawAxesInRect(bounds, origin: <#T##CGPoint#>, pointsPerUnit: <#T##CGFloat#>)
+        
     }
-    */
+    
 
 }
