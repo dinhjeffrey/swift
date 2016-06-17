@@ -95,4 +95,14 @@ let harry = Chessboard()
 // boardColors can be queried with the squareIsBlackAtRow utility function:
 print(harry.squareIsBlackAtRow(0, column: 0))
 
+struct Fahrenheit {
+    let temperature: Double
+    init() {
+        temperature = 32.0
+    }
+}
+
+let degrees = Fahrenheit()
+degrees.temperature
+
 
