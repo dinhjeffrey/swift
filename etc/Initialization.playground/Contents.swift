@@ -105,4 +105,14 @@ struct Fahrenheit {
 let degrees = Fahrenheit()
 degrees.temperature
 
+struct ThaiFood {
+    let padThai: String?
+    let bloodSoup = "bacteria"
+    let nanProvince = "a province in Thailand?"
+}
+
+let anthonyBourdain = ThaiFood(padThai: "spicy")
+
+anthonyBourdain.padThai
+anthonyBourdain.bloodSoup
 
