@@ -219,19 +219,23 @@ print(thinkingOutLoud.name)
 
 class RequiredInitClass {
     var name: String?
-    required init() {
-        name = "Sparks fly"
+    required init(food: String) {
+        name = food
     }
 }
 
+// subclass automatically required to inherit superclass init
 class SubClassRequiredInit: RequiredInitClass {
-    required init() {
-        super.init()
-        name = "Count on me"
+    
+    init(number: Int) {
+        super.init(food: String(number))
+    }
+    required init(food: String) {
+        super.init(food: food)
     }
 }
 
-let bruno = SubClassRequiredInit()
+let bruno = SubClassRequiredInit(food: "All to you")
 print(bruno.name!)
 
 // Setting a Default Property Value with a Closure or Function
