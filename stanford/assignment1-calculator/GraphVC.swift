@@ -10,21 +10,20 @@ import UIKit
 
 class GraphVC: UIViewController {
     
-    var graphV = GraphV()
     
     @IBOutlet weak var graphView: GraphV! {
-        didSet {
-            graphView.addGestureRecognizer(UIPinchGestureRecognizer(
-                target: graphView,
-                action: #selector(GraphV.changeScale(_:))
-                ))
-            //updateUI()
-        }
+        didSet { }
     }
     
-    
-    
-    
-    
-    
+
+    @IBAction func zoomGraph(recognizer: UIPinchGestureRecognizer) {
+        if recognizer.state == .Changed {
+            graphView.scale  *= recognizer.scale
+            recognizer.scale = 1.0
+        }
+    }
+
+
+
+
 }

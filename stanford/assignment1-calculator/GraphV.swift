@@ -17,18 +17,6 @@ class GraphV: UIView {
     var graphCenter: CGPoint {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
-    
-    func changeScale(recognizer: UIPinchGestureRecognizer) {
-        switch recognizer.state {
-        case .Changed, .Ended:
-            scale  *= recognizer.scale
-            recognizer.scale = 1.0
-        default:
-            break
-        }
-    }
-
-    
 
     
     override func drawRect(rect: CGRect) {
