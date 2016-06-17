@@ -34,6 +34,15 @@ class FaceVC: UIViewController {
         updateUI()
         }} // update first time view hooked up
     
+    @IBAction func toggleEyes(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .Ended {
+            switch expression.eyes {
+            case .Open: expression.eyes = .Closed
+            case .Closed: expression.eyes = .Open
+            case .Squinting: expression.eyes = .Open
+            }
+        }
+    }
     @objc private func increaseHappiness() {
         expression.mouth = expression.mouth.happierMouth()
     }
