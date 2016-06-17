@@ -9,9 +9,18 @@
 import UIKit
 
 class GraphVC: UIViewController {
-
-    @IBOutlet weak var graphView: GraphV!
     
-
-
+    var graphV = GraphV()
+    
+    @IBOutlet weak var graphView: GraphV! {
+        didSet {
+            graphView.addGestureRecognizer(UIPinchGestureRecognizer(
+                target: graphView,
+                action: #selector(GraphV.changeScale(_:))
+                ))
+            //updateUI()
+        }
+    }
+        
+    
 }

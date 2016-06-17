@@ -10,21 +10,31 @@ import UIKit
 
 @IBDesignable
 class GraphV: UIView {
-    @IBInspectable var axesColor: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    
+    @IBInspectable var scale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
+    let pointsPerUnit: CGFloat = 50.0
+    
     var graphCenter: CGPoint {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
+    func changeScale(recognizer: UIPinchGestureRecognizer) {
+        switch recognizer.state {
+        case .Changed, .Ended:
+            scale  *= recognizer.scale
+            recognizer.scale = 1.0
+        default:
+            break
+        }
+    }
+
     
-    
-    
+
     
     override func drawRect(rect: CGRect) {
         let axes = AxesDrawer(color: UIColor.blackColor(), contentScaleFactor: contentScaleFactor)
-        axes.drawAxesInRect(bounds, origin: graphCenter, pointsPerUnit: CGFloat(50.0))
+        axes.drawAxesInRect(bounds, origin: graphCenter, pointsPerUnit: pointsPerUnit * scale)
         let path = UIBezierPath()
-        
         path.stroke()
-        
     }
 }

@@ -11,18 +11,12 @@ import UIKit
 @IBDesignable
 class FaceView: UIView {
     // stored property
-    @IBInspectable
-    var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } } // explicitly type Type to use IBInspectable
-    @IBInspectable
-    var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } } // 1 full smile, -1 full frown
-    @IBInspectable
-    var eyesOpen: Bool = false  { didSet { setNeedsDisplay() } }
-    @IBInspectable
-    var eyeBrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } } // -1 full furrow, 1 fully relaxed
-    @IBInspectable
-    var color: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
-    @IBInspectable
-    var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay() } }
+    @IBInspectable var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } } // explicitly type Type to use IBInspectable
+    @IBInspectable var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } } // 1 full smile, -1 full frown
+    @IBInspectable var eyesOpen: Bool = false  { didSet { setNeedsDisplay() } }
+    @IBInspectable var eyeBrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } } // -1 full furrow, 1 fully relaxed
+    @IBInspectable var color: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    @IBInspectable var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay() } }
     
     func changeScale(recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
