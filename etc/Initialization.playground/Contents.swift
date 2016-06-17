@@ -105,14 +105,150 @@ struct Fahrenheit {
 let degrees = Fahrenheit()
 degrees.temperature
 
-struct ThaiFood {
+class ThaiFood {
     let padThai: String?
     let bloodSoup = "bacteria"
     let nanProvince = "a province in Thailand?"
+    init(dish: String) {
+        self.padThai = dish
+    }
 }
 
-let anthonyBourdain = ThaiFood(padThai: "spicy")
+let anthonyBourdain = ThaiFood(dish: "spicy") // Need an init() for class to access stored variables. cannot do memberwise initialization for class, CAN do it for structs
 
 anthonyBourdain.padThai
 anthonyBourdain.bloodSoup
+
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+
+let namedMeat = Food(name: "Bacon")
+let unnamedMeat = Food()
+print(namedMeat.name)
+print(unnamedMeat.name)
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+
+let oneMysteryItem = RecipeIngredient() // inherited init since Food init() and RecipeIngredient  convenience init provides values for all properties
+print(oneMysteryItem.quantity)
+print(oneMysteryItem.name)
+oneMysteryItem.name = "No Makeup"
+print(oneMysteryItem.name)
+
+// Failiable Initializers
+
+enum TemperatureUnit {
+    case kelvin, celsius, fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case "K":
+            self = .kelvin
+        case "C":
+            self = .celsius
+        case "F":
+            self = .fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+
+let noMakeUp = TemperatureUnit(symbol: "K")
+
+// enums with rawValue automatically receives init?(rawValue)
+
+enum iNeedAGirl: Character {
+    case christina = "c", aegi = "a", vivs = "v"
+}
+
+let taeyang = iNeedAGirl(rawValue: "e")
+
+
+class Document {
+    var name: String?
+    // this init creates a document with a nil name value
+    init() {}
+    
+    // this init creates a document with a nonempty name value
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+
+class AutomaticallyNamedDocument: Document {
+    override init() {
+        super.init(name: "Guardian Angel")!
+        // self.name = "[Untitled]"
+    }
+    
+    override init!(name: String) {
+        super.init(name: "Complicated")
+        if name.isEmpty {
+            self.name = "[Untitled]"
+        } else {
+            self.name = name
+        }
+    }
+}
+
+let redJumpSuitApparatus = AutomaticallyNamedDocument(name: "I see what`s going down")
+
+print(redJumpSuitApparatus.name!)
+
+let thinkingOutLoud = AutomaticallyNamedDocument()
+print(thinkingOutLoud.name)
+
+// required initializers
+
+class RequiredInitClass {
+    var name: String?
+    required init() {
+        name = "Sparks fly"
+    }
+}
+
+class SubClassRequiredInit: RequiredInitClass {
+    required init() {
+        super.init()
+        name = "Count on me"
+    }
+}
+
+let bruno = SubClassRequiredInit()
+print(bruno.name!)
+
+// Setting a Default Property Value with a Closure or Function
+
+struct Chessboard2 {
+    let boardColors: String = {
+        return "black"
+    }() // automatically initializes this closure and sets it to a constant property when Chessboard2 gets initialized
+}
+
+let myHeart = Chessboard2()
+myHeart.boardColors
+
+
+
+
+
+
+
 

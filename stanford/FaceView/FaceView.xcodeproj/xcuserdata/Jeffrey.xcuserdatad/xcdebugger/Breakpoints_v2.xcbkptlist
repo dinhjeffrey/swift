@@ -266,7 +266,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "FaceView"
+            landmarkName = "Ratios"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,7 +282,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "FaceView"
+            landmarkName = "Ratios"
             landmarkType = "3">
             <Locations>
                <Location
@@ -378,7 +378,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "Ratios"
+            landmarkName = "FaceView"
             landmarkType = "3">
             <Locations>
                <Location
@@ -426,8 +426,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "FaceView"
-            landmarkType = "3">
+            landmarkName = "pathForCircleCenteredAtPoint(_:withRadius:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -474,7 +474,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "pathForCircleCenteredAtPoint(_:withRadius:)"
+            landmarkName = "getEyeCenter(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -490,7 +490,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "pathForCircleCenteredAtPoint(_:withRadius:)"
+            landmarkName = "getEyeCenter(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,7 +522,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "getEyeCenter(_:)"
+            landmarkName = "pathForEye(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -538,7 +538,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "getEyeCenter(_:)"
+            landmarkName = "pathForEye(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -570,7 +570,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "pathForEye(_:)"
+            landmarkName = "pathForMouth()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -586,7 +586,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "pathForEye(_:)"
+            landmarkName = "pathForMouth()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -666,8 +666,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
             endingLineNumber = "110"
-            landmarkName = "FaceView"
-            landmarkType = "3">
+            landmarkName = "pathForBrow(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -682,8 +682,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "FaceView"
-            landmarkType = "3">
+            landmarkName = "pathForBrow(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -746,7 +746,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
-            landmarkName = "pathForBrow(_:)"
+            landmarkName = "drawRect(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -777,9 +777,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "drawRect(_:)"
-            landmarkType = "5">
+            endingLineNumber = "137">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -793,9 +791,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "drawRect(_:)"
-            landmarkType = "5">
+            endingLineNumber = "140">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -966,8 +962,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "FaceView"
-            landmarkType = "3">
+            landmarkName = "changeScale(_:)"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1077,7 +1073,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "Ratios"
+            landmarkName = "FaceView"
             landmarkType = "3">
             <Locations>
                <Location
@@ -1156,9 +1152,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "drawRect(_:)"
-            landmarkType = "5">
+            endingLineNumber = "136">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1411,8 +1405,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "FaceView"
-            landmarkType = "3">
+            landmarkName = "changeScale(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1443,8 +1437,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "changeScale(_:)"
-            landmarkType = "5">
+            landmarkName = "FaceView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
