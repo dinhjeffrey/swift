@@ -43,10 +43,10 @@ class FaceVC: UIViewController {
             }
         }
     }
-    @objc private func increaseHappiness() {
+    func increaseHappiness() {
         expression.mouth = expression.mouth.happierMouth()
     }
-    @objc private func decreaseHappiness() {
+    func decreaseHappiness() {
         expression.mouth = expression.mouth.sadderMouth()
     }
     
