@@ -4,3 +4,12 @@
  */
 
 
+// Initialize the Array
+var a = [Int]()
+
+print(a.count)
+
+// Append another array
+a += [4,5,6]
+print(a)
+		
