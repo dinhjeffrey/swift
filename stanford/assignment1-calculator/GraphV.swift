@@ -11,15 +11,21 @@ import UIKit
 @IBDesignable
 class GraphV: UIView {
     
-    @IBInspectable var scale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
+    @IBInspectable var scale: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
+    @IBInspectable var graphOrigin: CGPoint? {didSet { setNeedsDisplay() }}
     let pointsPerUnit: CGFloat = 50.0
     
+    
     var graphCenter: CGPoint {
-        return CGPoint(x: bounds.midX, y: bounds.midY)
+        if graphOrigin == nil {
+            graphOrigin = CGPoint(x: bounds.midX, y: bounds.midY)
+        }
+        return graphOrigin!
     }
-
+    
     
     override func drawRect(rect: CGRect) {
+        
         let axes = AxesDrawer(color: UIColor.blackColor(), contentScaleFactor: contentScaleFactor)
         axes.drawAxesInRect(bounds, origin: graphCenter, pointsPerUnit: pointsPerUnit * scale)
         let path = UIBezierPath()

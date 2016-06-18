@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		003F9EAC1D0FD7E800C028AD /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
-		005833191D0F846500F6629A /* GraphVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphVC.swift; path = ../GraphVC.swift; sourceTree = "<group>"; };
+		005833191D0F846500F6629A /* GraphVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphVC.swift; path = "/Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/assignment1-calculator/../GraphVC.swift"; sourceTree = "<absolute>"; };
 		00C97E9B1CF74CDF00844EA5 /* assignment1-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment1-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C97E9E1CF74CE000844EA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00C97EA01CF74CE000844EA5 /* CalculatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorVC.swift; sourceTree = "<group>"; };
