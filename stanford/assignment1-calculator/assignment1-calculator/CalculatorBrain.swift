@@ -22,6 +22,7 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
     var isPartialResult = false
     var descriptionAccumulator = "0"
     var internalProgram = [AnyObject]()
+    //var variable = String()
     
     /*
      internalProgram is AnyObject and operand is a Double. How does it work?
@@ -36,7 +37,7 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
         //print("internalProgram is \(internalProgram) and just appended \(operand)")
     }
     func setOperand(variableName: String) {
-        variableValues[variableName] = result
+        internalProgram.append(variableName)
     }
     /*
      π is `option + p`

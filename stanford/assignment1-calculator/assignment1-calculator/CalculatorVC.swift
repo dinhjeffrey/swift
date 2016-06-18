@@ -109,15 +109,25 @@ final class CalculatorVC: UIViewController {
         //print("in tappedAnsButton")
     }
     
+    
+    
+    
+    
+    
     private var screenValue: String?
-    @IBAction func saveScreenValue() {
+    @IBAction func setM() {
         screenValue = displayValue
+        sequenceValue = "saved M = \(displayValue)"
     }
-    @IBAction func restoreScreenValue() {
+    @IBAction func getM() {
         if let screenValue = screenValue {
             displayValue = screenValue
+        } else {
+            sequenceValue = "M is a variable"
+            brain.setOperand("M")
         }
     }
+    
     
     
     
@@ -141,6 +151,10 @@ final class CalculatorVC: UIViewController {
         }
         sequenceValue = brain.descriptionAccumulator + " ="
     }
+    
+    
+    
+    
     
     
     @IBAction private func tappedOperation(sender: UIButton) {
