@@ -14,7 +14,7 @@ class GraphVC: UIViewController {
     @IBOutlet weak var graphView: GraphV! {
         didSet { }
     }
-    @IBAction func moveGraph(recognizer: UIPanGestureRecognizer) {
+    @IBAction func panGraph(recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .Changed {
             let translation = recognizer.translationInView(graphView)
             graphView.graphOrigin = CGPoint(x: graphView.graphOrigin!.x + translation.x, y: graphView.graphOrigin!.y + translation.y)
@@ -25,7 +25,13 @@ class GraphVC: UIViewController {
     }
     
 
-    @IBAction func zoomGraph(recognizer: UIPinchGestureRecognizer) {
+    @IBAction func doubleTapGraph(recognizer: UITapGestureRecognizer) {
+            let pointTapped = recognizer.locationInView(graphView)
+            print("x: \(pointTapped.x) and y: \(pointTapped.y)")
+            graphView.graphOrigin = CGPoint(x: pointTapped.x, y: pointTapped.y)
+    }
+    
+    @IBAction func pinchGraph(recognizer: UIPinchGestureRecognizer) {
         if recognizer.state == .Changed {
             graphView.scale  *= recognizer.scale
             recognizer.scale = 1.0

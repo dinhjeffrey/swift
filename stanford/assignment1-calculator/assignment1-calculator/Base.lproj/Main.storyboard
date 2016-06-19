@@ -414,6 +414,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="dmU-8b-GZj" appends="YES" id="ueP-CL-fnb"/>
                                     <outletCollection property="gestureRecognizers" destination="A5v-eB-yjt" appends="YES" id="9aS-Ud-QEt"/>
+                                    <outletCollection property="gestureRecognizers" destination="KEt-2A-gaQ" appends="YES" id="Dxf-Fg-ebg"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -436,14 +437,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cs-cs-Qmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="dmU-8b-GZj">
                     <connections>
-                        <action selector="zoomGraph:" destination="5Uy-7R-U0w" id="9Ki-7i-lFZ"/>
+                        <action selector="pinchGraph:" destination="5Uy-7R-U0w" id="dE9-VI-3ha"/>
                     </connections>
                 </pinchGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="A5v-eB-yjt">
                     <connections>
-                        <action selector="moveGraph:" destination="5Uy-7R-U0w" id="P06-tB-xae"/>
+                        <action selector="panGraph:" destination="5Uy-7R-U0w" id="Dmd-eN-1o4"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="KEt-2A-gaQ">
+                    <connections>
+                        <action selector="doubleTapGraph:" destination="5Uy-7R-U0w" id="lgt-tk-e0u"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1938" y="1355"/>
         </scene>

@@ -138,7 +138,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphVC.swift"
-                  timestampString = "487899072.944873"
+                  timestampString = "488069422.010168"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -153,7 +153,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphVC.swift"
-                  timestampString = "487899072.944975"
+                  timestampString = "488069422.01032"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -282,7 +282,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "487899072.957923"
+                  timestampString = "488069422.017722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -297,7 +297,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "487899072.958035"
+                  timestampString = "488069422.017911"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -312,7 +312,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "487899072.958126"
+                  timestampString = "488069422.018064"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -329,12 +329,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,12 +345,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -361,12 +361,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -377,12 +377,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -393,12 +393,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -409,12 +409,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphVC.swift"
-            timestampString = "487900910.533406"
+            timestampString = "488069421.873232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "zoomGraph(_:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "pinchGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -430,7 +430,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "moveGraph(_:)"
+            landmarkName = "panGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -446,7 +446,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "moveGraph(_:)"
+            landmarkName = "panGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -462,7 +462,87 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "moveGraph(_:)"
+            landmarkName = "panGraph(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488068500.840416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "GraphVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488068502.56698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "doubleTapGraph(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488069421.873232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "GraphVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488069421.873232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "doubleTapGraph(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488069421.873232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "doubleTapGraph(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
