@@ -9,7 +9,7 @@
 import UIKit
 
 class GraphVC: UIViewController {
-    
+        
     @IBOutlet weak var graphView: GraphV! {
         didSet { }
     }
@@ -30,6 +30,7 @@ class GraphVC: UIViewController {
     @IBAction func doubleTapGraph(recognizer: UITapGestureRecognizer) {
         let pointTapped = recognizer.locationInView(graphView)
         print("x: \(pointTapped.x) and y: \(pointTapped.y)")
+        graphView.scale = 1.0
         graphView.graphOrigin = CGPoint(x: pointTapped.x, y: pointTapped.y)
     }
     @IBAction func pinchGraph(recognizer: UIPinchGestureRecognizer) {
@@ -41,7 +42,7 @@ class GraphVC: UIViewController {
     
     
     func graphPlot(sender: GraphV) -> [(x: Double, y: Double)]? {
-        // Performance fix to remove sluggish behavior (specially when screen is zoomed out):
+        // Performance fix to remove sluggish behavior (especially when screen is zoomed out):
         // a. the difference between minXDegree and maxXDegree will be high when zoomed out
         // b. the screen width has a fixed number of pixels, so we need to iterate only
         //    for the number of available pixels
