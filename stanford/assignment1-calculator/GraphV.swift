@@ -15,7 +15,17 @@ class GraphV: UIView {
     @IBInspectable var graphOrigin: CGPoint? {didSet { setNeedsDisplay() }}
     @IBInspectable var plotColor: UIColor = UIColor.redColor() {didSet { setNeedsDisplay() }}
     let pointsPerUnit: CGFloat = 50.0
-    
+    var minX: CGFloat {
+        let minXBound = -(bounds.width - (bounds.width - graphCenter.x))
+        return minXBound / (pointsPerUnit * scale)
+    }
+    var maxX: CGFloat {
+        let maxXBound = bounds.width - graphCenter.x
+        return maxXBound / (pointsPerUnit * scale)
+    }
+    var availablePixelsInXAxis: Double {
+        return Double(bounds.width * contentScaleFactor)
+    }
     
     var graphCenter: CGPoint {
         if graphOrigin == nil {
@@ -33,8 +43,10 @@ class GraphV: UIView {
     override func drawRect(rect: CGRect) {
         let axes = AxesDrawer(color: UIColor.blackColor(), contentScaleFactor: contentScaleFactor)
         axes.drawAxesInRect(bounds, origin: graphCenter, pointsPerUnit: pointsPerUnit * scale)
+        
         let path = UIBezierPath()
-        if let plots = graphVC.graphPlot(self) {
+        
+        if var plots = graphVC.graphPlot(self) {
             path.moveToPoint(translatePlot((x: plots[0].x , y: plots[0].y)))
             for plot in plots {
                 path.addLineToPoint(translatePlot((x: plot.x, y: plot.y)))

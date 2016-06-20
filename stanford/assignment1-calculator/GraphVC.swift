@@ -24,6 +24,7 @@ class GraphVC: UIViewController {
         let pointTapped = recognizer.locationInView(graphView)
         print("bounds.width are \(graphView.bounds.width)")
         print("x: \(pointTapped.x) and y: \(pointTapped.y)")
+        print("graphCenter.x is \(graphView.graphCenter.x) and graphCenter.y is \(graphView.graphCenter.y)")
     }
     
     @IBAction func doubleTapGraph(recognizer: UITapGestureRecognizer) {
@@ -37,12 +38,29 @@ class GraphVC: UIViewController {
             recognizer.scale = 1.0
         }
     }
-    var plots = [(x: Double, y: Double)]()
+    
+    
     func graphPlot(sender: GraphV) -> [(x: Double, y: Double)]? {
-        for point in Int(-sender.graphCenter.x)...Int(sender.bounds.width - sender.graphCenter.x) { // if bounds are 414, goes from -207 ... 207
-            plots.append((x: Double(point), y: 9))
+        // Performance fix to remove sluggish behavior (specially when screen is zoomed out):
+        // a. the difference between minXDegree and maxXDegree will be high when zoomed out
+        // b. the screen width has a fixed number of pixels, so we need to iterate only
+        //    for the number of available pixels
+        // c. loopIncrementSize ensures that the count of var plots will always be fixed to
+        //    the number of available pixels for screen width
+
+        var plots = [(x: Double, y: Double)]()
+        let minXDegree = Double(sender.minX) * (180 / M_PI)
+        let maxXDegree = Double(sender.maxX) * (180 / M_PI)
+        let loopIncrementSize = (maxXDegree - minXDegree) / sender.availablePixelsInXAxis
+        for point in Double(minXDegree).stride(through: Double(maxXDegree), by: Double(loopIncrementSize)) {
+            let radian = Double(point) * (M_PI / 180)
+            // guard radian.isNormal || radian.isZero else { continue }
+            plots.append((
+                x: radian,
+                y: sin(radian)
+            ))
         }
-        //print(plots)
+        // print("minXDegree is \(minXDegree) and maxXDegree is \(maxXDegree)")
         return plots
     }
 }
