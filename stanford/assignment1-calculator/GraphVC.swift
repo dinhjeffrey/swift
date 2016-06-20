@@ -9,7 +9,7 @@
 import UIKit
 
 class GraphVC: UIViewController {
-        
+    
     @IBOutlet weak var graphView: GraphV! {
         didSet { }
     }
@@ -48,19 +48,38 @@ class GraphVC: UIViewController {
         //    for the number of available pixels
         // c. loopIncrementSize ensures that the count of var plots will always be fixed to
         //    the number of available pixels for screen width
-
         var plots = [(x: Double, y: Double)]()
         let minXDegree = Double(sender.minX) * (180 / M_PI)
         let maxXDegree = Double(sender.maxX) * (180 / M_PI)
         let loopIncrementSize = (maxXDegree - minXDegree) / sender.availablePixelsInXAxis
-        for point in Double(minXDegree).stride(through: Double(maxXDegree), by: Double(loopIncrementSize)) {
-            let radian = Double(point) * (M_PI / 180)
-            // guard radian.isNormal || radian.isZero else { continue }
-            plots.append((
-                x: radian,
-                y: sin(radian)
-            ))
+        if let storedM = CalculatorBrain.variableValues["M"] {
+            for point in Double(minXDegree).stride(through: Double(maxXDegree), by: Double(loopIncrementSize)) {
+                let radian = Double(point) * (M_PI / 180)
+                // guard radian.isNormal || radian.isZero else { continue }
+                if storedM as? String == "sin(M)" {
+                    plots.append((
+                        x: radian,
+                        y: sin(radian)
+                    ))
+                } else if storedM as? String == "tan(M)" {
+                    plots.append((
+                        x: radian,
+                        y: tan(radian)
+                    ))
+                } else if storedM as? String == "M" {
+                    plots.append((
+                        x: radian,
+                        y: radian
+                    ))
+                } else {
+                    plots.append((
+                        x: radian,
+                        y: (storedM as? Double)!
+                    ))
+                }
+            }
         }
+        
         // print("minXDegree is \(minXDegree) and maxXDegree is \(maxXDegree)")
         return plots
     }

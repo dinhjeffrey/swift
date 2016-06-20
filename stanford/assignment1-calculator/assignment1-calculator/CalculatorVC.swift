@@ -93,13 +93,16 @@ final class CalculatorVC: UIViewController {
         //print("sending to sequenceAllClear()")
         sequenceAllClear()
         brain.clear()
+        CalculatorBrain.variableValues.removeAll()
     }
     @IBAction private func clearEntry() {
         let clearByOne = displayValue.endIndex.advancedBy(-1)
         displayValue = displayValue.substringToIndex(clearByOne)
         if displayValue.characters.count == 0 {
             displayValue = "0"
+            guard brain.internalProgram.last != nil else { return }
             brain.internalProgram.removeLast()
+            CalculatorBrain.variableValues.removeAll()
         }
         print("internal program is \(brain.internalProgram)")
         //print("in func clearEntry")
@@ -114,17 +117,20 @@ final class CalculatorVC: UIViewController {
     
     
     
-    private var screenValue: String?
+    static var storedM = CalculatorBrain.variableValues["M"]
     @IBAction func setM() {
-        screenValue = displayValue
-        sequenceValue = "saved M = \(displayValue)"
+        if let storedM = CalculatorBrain.variableValues["M"] {
+            sequenceValue = "M = \(storedM)"
+        }
     }
     @IBAction func getM() {
-        if let screenValue = screenValue {
-            displayValue = screenValue
+        if sequenceValue == " " {
+            CalculatorBrain.variableValues["M"] = "M"
+            sequenceValue = "Saved: M = M"
+            print(CalculatorBrain.variableValues)
         } else {
-            sequenceValue = "M is a variable"
             brain.setOperand("M")
+            sequenceValue = "Saved: M = \(brain.accumulator)"
         }
     }
     
@@ -161,7 +167,7 @@ final class CalculatorVC: UIViewController {
         //print("in func tappedOperation")
         userIsInTheMiddleOfTyping = false
         //print("sending displayValue to brain.setOperand")
-        brain.setOperand(Double(displayValue)!)
+        brain.setOperand((Double(displayValue))!)
         guard sender.currentTitle != nil else { return }
         let mathematicalSymbol = sender.currentTitle!
         // highlight

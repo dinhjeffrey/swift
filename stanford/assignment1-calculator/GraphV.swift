@@ -46,7 +46,7 @@ class GraphV: UIView {
         
         let path = UIBezierPath()
         
-        if var plots = graphVC.graphPlot(self) {
+        if var plots = graphVC.graphPlot(self) where plots.count != 0 {
             path.moveToPoint(translatePlot((x: plots[0].x , y: plots[0].y)))
             for plot in plots {
                 path.addLineToPoint(translatePlot((x: plot.x, y: plot.y)))

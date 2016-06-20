@@ -36,9 +36,7 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
         internalProgram.append(operand)
         //print("internalProgram is \(internalProgram) and just appended \(operand)")
     }
-    func setOperand(variableName: String) {
-        internalProgram.append(variableName)
-    }
+    
     /*
      π is `option + p`
      factored out func performOperation into operations dictionary because a lot of the code will be duplicated code
@@ -68,7 +66,12 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
         "−" : Operation.BinaryOperation(-, {"\($0) - \($1)"}),
         "=" : .Equals
     ]
-    var variableValues: [String: Double] = [:]
+    func setOperand(variableName: String) {
+        internalProgram.append(variableName)
+        CalculatorBrain.variableValues[variableName] = accumulator
+        print(CalculatorBrain.variableValues)
+    }
+    static var variableValues: [String: AnyObject] = [:]
     /*
      enums is a discrete set of values
      enums like classes can have methods. enums cannot have vars or inheritance.
@@ -111,8 +114,16 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
                 //print("in case .Constant")
                 
             case let .UnaryOperation(function, descriptionFunction):
-                accumulator = function(accumulator)
-                descriptionAccumulator = descriptionFunction(descriptionAccumulator)
+                if CalculatorBrain.variableValues["M"] as? String == "M" && symbol == "sin" {
+                    CalculatorBrain.variableValues["M"] = "sin(M)"
+                    descriptionAccumulator = "saved sin(M)"
+                } else if CalculatorBrain.variableValues["M"] as? String == "M" && symbol == "tan" {
+                    CalculatorBrain.variableValues["M"] = "tan(M)"
+                    descriptionAccumulator = "saved tan(M)"
+                } else {
+                    accumulator = function(accumulator)
+                    descriptionAccumulator = descriptionFunction(descriptionAccumulator)
+                }
                 //print("in case .UnaryOperation")
                 
             case let .BinaryOperation(function, descriptionFunction):
