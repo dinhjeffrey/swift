@@ -415,6 +415,7 @@
                                     <outletCollection property="gestureRecognizers" destination="dmU-8b-GZj" appends="YES" id="ueP-CL-fnb"/>
                                     <outletCollection property="gestureRecognizers" destination="A5v-eB-yjt" appends="YES" id="9aS-Ud-QEt"/>
                                     <outletCollection property="gestureRecognizers" destination="KEt-2A-gaQ" appends="YES" id="Dxf-Fg-ebg"/>
+                                    <outletCollection property="gestureRecognizers" destination="Oca-5f-6AV" appends="YES" id="EBJ-v8-6jQ"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -448,6 +449,11 @@
                 <tapGestureRecognizer numberOfTapsRequired="2" id="KEt-2A-gaQ">
                     <connections>
                         <action selector="doubleTapGraph:" destination="5Uy-7R-U0w" id="lgt-tk-e0u"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Oca-5f-6AV">
+                    <connections>
+                        <action selector="singleTap:" destination="5Uy-7R-U0w" id="7WQ-aj-ahX"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
