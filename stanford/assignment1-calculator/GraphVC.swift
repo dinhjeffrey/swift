@@ -39,7 +39,7 @@ class GraphVC: UIViewController {
     }
     var plots = [(x: Double, y: Double)]()
     func graphPlot(sender: GraphV) -> [(x: Double, y: Double)]? {
-        for point in Int(0 - sender.graphCenter.x)...Int(sender.bounds.width - sender.graphCenter.x) {
+        for point in Int(-sender.graphCenter.x)...Int(sender.bounds.width - sender.graphCenter.x) { // if bounds are 414, goes from -207 ... 207
             plots.append((x: Double(point), y: 9))
         }
         //print(plots)

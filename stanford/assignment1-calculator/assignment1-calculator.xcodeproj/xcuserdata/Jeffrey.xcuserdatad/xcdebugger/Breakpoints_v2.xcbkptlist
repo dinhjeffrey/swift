@@ -138,7 +138,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphVC.swift"
-                  timestampString = "488085064.989066"
+                  timestampString = "488091641.283417"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -153,7 +153,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphVC.swift"
-                  timestampString = "488085064.989184"
+                  timestampString = "488091641.283525"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphV.swift"
-            timestampString = "488084335.209063"
+            timestampString = "488091581.345985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "drawRect(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GraphV.swift"
-            timestampString = "488084335.209063"
+            timestampString = "488091581.345985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "drawRect(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,7 +282,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "488085064.993135"
+                  timestampString = "488091641.287959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -297,7 +297,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "488085064.993261"
+                  timestampString = "488091641.288089"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -312,7 +312,7 @@
                   moduleName = "assignment1-calculator"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jeffrey/Documents/GitHub/swift/stanford/assignment1-calculator/GraphV.swift"
-                  timestampString = "488085064.99342"
+                  timestampString = "488091641.288195"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -544,6 +544,38 @@
             endingLineNumber = "32"
             landmarkName = "GraphV"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphVC.swift"
+            timestampString = "488091053.741939"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "graphPlot(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphV.swift"
+            timestampString = "488091641.113859"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "drawRect(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

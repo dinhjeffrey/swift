@@ -35,7 +35,7 @@ class GraphV: UIView {
         axes.drawAxesInRect(bounds, origin: graphCenter, pointsPerUnit: pointsPerUnit * scale)
         let path = UIBezierPath()
         if let plots = graphVC.graphPlot(self) {
-            path.moveToPoint(translatePlot((x: plots[0].x , y: plots[0].y))) // min bound x on screen, max bound x on screen. doesn't matter where you start as long as it is a point on the plot
+            path.moveToPoint(translatePlot((x: plots[0].x , y: plots[0].y)))
             for plot in plots {
                 path.addLineToPoint(translatePlot((x: plot.x, y: plot.y)))
             }
