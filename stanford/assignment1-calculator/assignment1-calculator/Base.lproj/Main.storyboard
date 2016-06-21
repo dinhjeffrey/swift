@@ -167,7 +167,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="setM" destination="BYZ-38-t0r" eventType="touchUpInside" id="OJU-FE-HiY"/>
+                                                            <action selector="getM" destination="BYZ-38-t0r" eventType="touchUpInside" id="k6f-Xh-eRc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-4F-uxZ">
@@ -178,7 +178,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="getM" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWi-4E-mTL"/>
+                                                            <action selector="setM" destination="BYZ-38-t0r" eventType="touchUpInside" id="PG5-rW-JFI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s53-2L-09V">

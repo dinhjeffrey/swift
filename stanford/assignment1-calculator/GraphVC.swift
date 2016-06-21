@@ -52,21 +52,21 @@ class GraphVC: UIViewController {
         let minXDegree = Double(sender.minX) * (180 / M_PI)
         let maxXDegree = Double(sender.maxX) * (180 / M_PI)
         let loopIncrementSize = (maxXDegree - minXDegree) / sender.availablePixelsInXAxis
-        if let storedM = CalculatorBrain.variableValues["M"] {
+        if let storedM = CalculatorVC.storedM  {
             for point in Double(minXDegree).stride(through: Double(maxXDegree), by: Double(loopIncrementSize)) {
                 let radian = Double(point) * (M_PI / 180)
                 // guard radian.isNormal || radian.isZero else { continue }
-                if storedM as? String == "sin(M)" {
+                if storedM == "sin(M)" {
                     plots.append((
                         x: radian,
                         y: sin(radian)
                     ))
-                } else if storedM as? String == "tan(M)" {
+                } else if storedM == "tan(M)" {
                     plots.append((
                         x: radian,
                         y: tan(radian)
                     ))
-                } else if storedM as? String == "M" {
+                } else if storedM == "M" {
                     plots.append((
                         x: radian,
                         y: radian
@@ -74,12 +74,12 @@ class GraphVC: UIViewController {
                 } else {
                     plots.append((
                         x: radian,
-                        y: (storedM as? Double)!
+                        y: Double(storedM)!
                     ))
                 }
+                print("storedM is \(storedM)")
             }
         }
-        
         // print("minXDegree is \(minXDegree) and maxXDegree is \(maxXDegree)")
         return plots
     }

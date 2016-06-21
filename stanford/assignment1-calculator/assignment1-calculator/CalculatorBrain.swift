@@ -68,10 +68,10 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
     ]
     func setOperand(variableName: String) {
         internalProgram.append(variableName)
-        CalculatorBrain.variableValues[variableName] = accumulator
+        CalculatorBrain.variableValues[variableName] = String(accumulator)
         print(CalculatorBrain.variableValues)
     }
-    static var variableValues: [String: AnyObject] = [:]
+    static var variableValues: [String: String] = [:]
     /*
      enums is a discrete set of values
      enums like classes can have methods. enums cannot have vars or inheritance.
@@ -114,10 +114,10 @@ final class CalculatorBrain { // no super class since CalculatorBrain is the bas
                 //print("in case .Constant")
                 
             case let .UnaryOperation(function, descriptionFunction):
-                if CalculatorBrain.variableValues["M"] as? String == "M" && symbol == "sin" {
+                if CalculatorBrain.variableValues["M"] == "M" && symbol == "sin" {
                     CalculatorBrain.variableValues["M"] = "sin(M)"
                     descriptionAccumulator = "saved sin(M)"
-                } else if CalculatorBrain.variableValues["M"] as? String == "M" && symbol == "tan" {
+                } else if CalculatorBrain.variableValues["M"] == "M" && symbol == "tan" {
                     CalculatorBrain.variableValues["M"] = "tan(M)"
                     descriptionAccumulator = "saved tan(M)"
                 } else {

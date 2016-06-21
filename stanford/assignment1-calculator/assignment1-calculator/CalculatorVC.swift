@@ -117,15 +117,22 @@ final class CalculatorVC: UIViewController {
     
     
     
-    static var storedM = CalculatorBrain.variableValues["M"]
-    @IBAction func setM() {
-        if let storedM = CalculatorBrain.variableValues["M"] {
-            sequenceValue = "M = \(storedM)"
+    static var storedM: String? {
+        get {
+            return CalculatorBrain.variableValues["M"]
+        }
+        set {
+            CalculatorBrain.variableValues["M"] = newValue
         }
     }
     @IBAction func getM() {
+        if let storedM = CalculatorVC.storedM {
+            sequenceValue = "M = \(storedM)"
+        }
+    }
+    @IBAction func setM() {
         if sequenceValue == " " {
-            CalculatorBrain.variableValues["M"] = "M"
+            CalculatorVC.storedM = "M"
             sequenceValue = "Saved: M = M"
             print(CalculatorBrain.variableValues)
         } else {
